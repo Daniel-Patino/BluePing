@@ -1,3 +1,5 @@
+
+
 import org.apache.commons.math3.linear.RealVector;
 
 import javafx.scene.layout.Pane;
@@ -6,7 +8,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
-public class CoordinateScene {
+public class CoordinateScene{
 
 	private TrilaterationTest trilaterate;
 	private RealVector pos;
@@ -15,7 +17,7 @@ public class CoordinateScene {
 	
 	public CoordinateScene(TrilaterationTest trilaterate, RealVector pos, boolean nodesVisible){
 		this.trilaterate = trilaterate;
-		this.pos = pos;	
+		this.pos = pos;
 		Shape[] nodes = nodes(nodesVisible);
 		setPane();
 		coordinatePane.getChildren().addAll(centerCircle(10, Color.BLUE), nodes[0], nodes[1], nodes[2]);
