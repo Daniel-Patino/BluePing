@@ -3,10 +3,10 @@ import org.apache.commons.math3.linear.RealVector;
 public class TrilaterationTest {
 
 	
-	public double[] distances = new double[] {Math.sqrt(873493), Math.sqrt(126493), Math.sqrt(432493)};
-	double[] node1 = new double[] {500, 0, 0};
-	double[] node2 = new double[] {0, 1000, 0};
-	double[] node3 = new double[] {1000, 1000, 0};
+	public double[] distances = new double[] {375, 530.33, 530.33};
+	double[] node1 = new double[] {375, 0, 0};
+	double[] node2 = new double[] {0, 750, 0};
+	double[] node3 = new double[] {750, 750, 0};
 	
 	public RealVector trilateration3DExact() throws Exception{
 		double[][] positions = new double[][] {node1, node2, node3};
