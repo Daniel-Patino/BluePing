@@ -16,9 +16,9 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {	
 			/* Instantiate */
-			StackPane masterStack = new StackPane();
-			TrilaterationTest test = new TrilaterationTest();
-			RealVector dot = test.trilateration3DExact();
+			StackPane masterStack = new StackPane();			// What the user will ultimately see
+			TrilaterationTest test = new TrilaterationTest();	// What will do the Trilateration
+			RealVector dot = test.trilateration3DExact();		// Used to determine the user Pos
 			
 			/* Creates the Coordinate Scene */
 			CoordinateScene coordScene = new CoordinateScene(test, dot, false);
@@ -26,10 +26,14 @@ public class Main extends Application {
 			/* Creates the Details Scene */
 			DetailsScene detScene = new DetailsScene(DETAILS_BUTTONS);
 			
+			/* Creates the Widgets Scene */
+			WidgetsScene widScene = new WidgetsScene();
+			
 			/* Creates the masterStack, what the user will see */
 			StackPane.setAlignment(coordScene.coordinatePane, Pos.TOP_LEFT);
 			StackPane.setAlignment(detScene.getDetailsScene(), Pos.TOP_RIGHT);
-			masterStack.getChildren().addAll(coordScene.coordinatePane, detScene.getDetailsScene());			
+			StackPane.setAlignment(widScene.widgetsPane, Pos.BOTTOM_CENTER);
+			masterStack.getChildren().addAll(coordScene.coordinatePane, detScene.getDetailsScene(), widScene.widgetsPane);			
 			Scene openScene = new Scene(masterStack, WIDTH, HEIGHT);
 			
 			/* Shows the Stage */
