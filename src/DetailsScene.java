@@ -1,6 +1,9 @@
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 
 /**
  * This class creates the scene for details regarding the application
@@ -20,6 +23,9 @@ public class DetailsScene {
 	
 	private HBox optionsTabs = new HBox();
 	private BorderPane detailsScene = new BorderPane();	
+	private Pane someRandomPane = new Pane();
+
+	
 	
 	/**
 	 * The constructor will create a DetailsScene with the parameters
@@ -30,6 +36,12 @@ public class DetailsScene {
 		detailsScene.setTop(optionsTabs);
 		detailsScene.setMaxSize(Main.WIDTH - 750, Main.HEIGHT - (Main.HEIGHT - 750));
 		detailsScene.setStyle("-fx-border-color: red;");
+		
+		someRandomPane.setStyle("-fx-border-color: green;");
+		someRandomPane.setMaxSize(Main.WIDTH - 775, Main.HEIGHT - (Main.HEIGHT - 700));
+		
+		detailsScene.setCenter(someRandomPane);
+		
 	}
 	
 	/**

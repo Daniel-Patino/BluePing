@@ -4,23 +4,35 @@ import javafx.scene.layout.Pane;
 
 public class WidgetsScene {
 	
-	BorderPane widgetsPane = new BorderPane();
+	public BorderPane widgetsPane = new BorderPane();
+	public Slider slider = new Slider();
 	
-	public WidgetsScene(){
-		Slider slider = new Slider();
-		slider.setMin(0);
-		slider.setMax(400);
-		slider.setValue(40);
-		slider.setShowTickLabels(true);
-		slider.setShowTickMarks(true);
-		slider.setMajorTickUnit(50);
-		slider.setMinorTickCount(5);
-		slider.setBlockIncrement(10);
-		slider.setMaxWidth(500);
-		slider.setMinWidth(500);
+	public WidgetsScene()
+	{
+		defineSlider();
+		defineWidgetsPane();
+	}	
+	
+	private void defineWidgetsPane()
+	{
 		widgetsPane.setTop(slider);
 		widgetsPane.setMaxSize(Main.WIDTH, Main.HEIGHT - 750);
 		widgetsPane.setStyle("-fx-border-color: red;");
-		//widgetsPane.getChildren().addAll(slider);
-	}	
+	}
+	
+	private void defineSlider()
+	{
+		slider.setMaxSize(1000, 500);
+		slider.setMin(0);
+		slider.setMax(25);
+		slider.setValue(slider.getMax());
+		slider.setShowTickLabels(true);
+		slider.setShowTickMarks(true);
+		slider.setMajorTickUnit(5);
+		slider.setMinorTickCount(1);;
+		slider.setBlockIncrement(10);
+		slider.setBlockIncrement(5);
+		slider.setSnapToTicks(true);
+		slider.isSnapToTicks();
+	}
 }
