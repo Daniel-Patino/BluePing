@@ -50,7 +50,7 @@ public class Main extends Application {
 			/* Instantiate */
 			StackPane masterStack = new StackPane();			// What the user will ultimately see
 			TrilaterationTest test = new TrilaterationTest();	// What will do the Trilateration
-			RealVector[] dots = test.trilateration3DExact(nodeArr1, nodeArr2, nodeArr3, distArr1);		// Used to determine the user Pos
+			RealVector[] dots = test.trilateration3DExact();		// Used to determine the user Pos
 			
 			/* Creates the Coordinate Scene */
 			CoordinateScene coordScene = new CoordinateScene(test, dots, false);

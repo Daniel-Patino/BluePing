@@ -1,7 +1,9 @@
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 /**
  * This class creates the scene for details regarding the application
@@ -21,7 +23,7 @@ public class DetailsScene {
 
 	private HBox optionsTabs = new HBox();
 	private BorderPane detailsScene = new BorderPane();	
-	private Pane someRandomPane = new Pane();
+	private GridPane someRandomPane = new GridPane();
 
 	public Button[] buttons;
 	
@@ -53,8 +55,12 @@ public class DetailsScene {
 		
 		Button[] buttons = new Button[numberOfButtons];
 		
+		buttons[0] = new Button("Customers");
+		buttons[1] = new Button("Location");
+		buttons[2] = new Button("Duration");
+		
 		for(int i = 0; i < numberOfButtons; i++){
-			buttons[i] = new Button("Text");
+			//buttons[i] = new Button("Customers");
 			buttons[i].setPrefWidth((Main.WIDTH - 750) / numberOfButtons);
 		}
 		
@@ -65,10 +71,25 @@ public class DetailsScene {
 	{
 		buttons[0].setOnMouseClicked(e-> {
 			someRandomPane.setStyle("-fx-border-color: blue; -fx-border-width: 5;");
+			Text text1 = new Text("Customer One: ");
+			Text text2 = new Text("Customer Two: ");
+			Text text3 = new Text("Customer Three: ");
+			Text text4 = new Text("Customer Four: ");
+			Text text5 = new Text("Customer Five: ");
+			Text text6 = new Text("Customer Six: ");
+			someRandomPane.add(text1, 0, 0);
+			someRandomPane.add(text2, 0, 1);
+			someRandomPane.add(text3, 0, 2);
+			someRandomPane.add(text4, 0, 3);
+			someRandomPane.add(text5, 0, 4);
+			someRandomPane.add(text6, 0, 5);
 		});
 		
 		buttons[1].setOnMouseClicked(e-> {
 			someRandomPane.setStyle("-fx-border-color: orange; -fx-border-width: 10;");
+			if(someRandomPane.getChildren().size() != 0){
+				someRandomPane.getChildren().remove(0);
+			}
 		});
 		
 		buttons[2].setOnMouseClicked(e-> {
@@ -98,7 +119,7 @@ public class DetailsScene {
 		return someRandomPane;
 	}
 
-	public void setSomeRandomPane(Pane someRandomPane) {
+	public void setSomeRandomPane(GridPane someRandomPane) {
 		this.someRandomPane = someRandomPane;
 	}
 }
