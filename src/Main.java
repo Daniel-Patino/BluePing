@@ -14,7 +14,9 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
-		try {	
+		try {
+			ReadFile ourRead = new ReadFile();
+			
 			/* Instantiate */
 			StackPane masterStack = new StackPane();			// What the user will ultimately see
 			TrilaterationTest test = new TrilaterationTest();	// What will do the Trilateration
@@ -29,7 +31,7 @@ public class Main extends Application {
 			/* Creates the Widgets Scene */
 			WidgetsScene widScene = new WidgetsScene();
 			
-			/* Creates the masterStack, what the user will see */
+			/* Creates the masterStack that will hold all the scenes */
 			StackPane.setAlignment(coordScene.coordinatePane, Pos.TOP_LEFT);
 			StackPane.setAlignment(detScene.getDetailsScene(), Pos.TOP_RIGHT);
 			StackPane.setAlignment(widScene.widgetsPane, Pos.BOTTOM_CENTER);
@@ -40,7 +42,7 @@ public class Main extends Application {
 			primaryStage.setScene(openScene);
 			primaryStage.setResizable(false);
 			primaryStage.show();
-		} 
+		}
 		
 		catch(Exception e) {
 			e.printStackTrace();

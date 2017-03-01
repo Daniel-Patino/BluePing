@@ -61,7 +61,7 @@ public class DetailsScene {
 		return buttons;
 	}
 	
-	public void someEvent()
+	private void someEvent()
 	{
 		buttons[0].setOnMouseClicked(e-> {
 			someRandomPane.setStyle("-fx-border-color: blue; -fx-border-width: 5;");
