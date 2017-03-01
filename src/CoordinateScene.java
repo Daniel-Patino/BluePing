@@ -14,7 +14,7 @@ import javafx.scene.shape.Shape;
 public class CoordinateScene{
 
 	private TrilaterationTest trilaterate;
-	private RealVector pos;
+	private RealVector[] pos;
 	
 	public Pane coordinatePane;
 	
@@ -25,7 +25,7 @@ public class CoordinateScene{
 	 * @param pos
 	 * @param nodesVisible
 	 */
-	public CoordinateScene(TrilaterationTest trilaterate, RealVector pos, boolean nodesVisible)
+	public CoordinateScene(TrilaterationTest trilaterate, RealVector[] pos, boolean nodesVisible)
 	{
 		this.trilaterate = trilaterate;
 		this.pos = pos;
@@ -43,6 +43,16 @@ public class CoordinateScene{
 	{
 		
 		Shape[] nodes = new Shape[3];
+		
+		Circle[] node1Arr;
+		Circle[] node2Arr;
+		Circle[] node3Arr;
+		
+		for(int i = 0; i < pos.length; i++){
+			node1Arr[i] = new Circle(trilaterate.[i][0], trilaterate.node1[i][1], trilaterate.distances[i][0]);
+			node2Arr[i] = new Circle();
+			node3Arr[i] = new Circle();
+		}
 		
 		Circle node1 = new Circle(trilaterate.node1[0], trilaterate.node1[1], trilaterate.distances[0]);
 		Circle node2 = new Circle(trilaterate.node2[0], trilaterate.node2[1], trilaterate.distances[1]);
