@@ -24,27 +24,6 @@ public class TrilaterationTest {
 		    System.out.println(x[i].getEntry(1));
 		    System.out.println(x[i].getEntry(2));
 		}
-		
 	    return x;
-	}
-	
-	private RealVector[] createArrayOfNodesAndCircles(double[][] node1, double[][] node2, double[][] node3, double[][] distances)
-	{
-		if(node1.length == node2.length && node2.length == node3.length){
-			
-			RealVector[] positions = new RealVector[node1.length];
-			
-			for(int i = 0; i < node1.length; i++){
-				double[][] positionArray = new double[][]{node1[i], node2[i], node3[i]};
-				TrilaterationFunction trilatertionFunction = new TrilaterationFunction(positionArray, distances[i]);
-				LinearLeastSquaresSolver lSolver = new LinearLeastSquaresSolver(trilatertionFunction);
-				
-				positions[i] = lSolver.solve();
-			}
-			
-			return positions;
-		}
-		
-		return null;
 	}
 }

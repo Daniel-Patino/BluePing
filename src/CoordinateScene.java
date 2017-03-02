@@ -38,13 +38,11 @@ public class CoordinateScene{
 		Circle spiderman = new Circle(570, 170, 10, Color.RED);
 		Circle batjoker = new Circle(675, 100, 10, Color.GREEN);
 		Circle dano = new Circle(630, 630, 10, Color.PURPLE);
-
 		coordinatePane.getChildren().addAll(yoshi, flash, megaman, spiderman, batjoker, dano);
 		
 		Circle[] circles = centerCircleArr(10, Color.BLUE);
-		
 		for(int i = 0; i < circles.length; i++){
-			coordinatePane.getChildren().add(circles[i]);
+			//coordinatePane.getChildren().add(circles[i]);
 		}
 	}
 	
@@ -55,8 +53,26 @@ public class CoordinateScene{
 	 */
 	private Shape[] nodes(boolean nodesVisible)
 	{
-		
+		//Shape[][] nodes = new Shape[trilaterate.distances.length][3];
 		Shape[] nodes = new Shape[3];
+//		for(int i = 0; i < trilaterate.distances.length; i++){
+//			Circle node1 = new Circle(trilaterate.node1[0], trilaterate.node1[1], trilaterate.distances[i][0]);
+//			Circle node2 = new Circle(trilaterate.node2[0], trilaterate.node2[1], trilaterate.distances[i][1]);
+//			Circle node3 = new Circle(trilaterate.node3[0], trilaterate.node3[1], trilaterate.distances[i][2]);
+//			node1 = defineNodes(node1, nodesVisible);
+//			node2 = defineNodes(node2, nodesVisible);
+//			node3 = defineNodes(node3, nodesVisible);
+//			
+//			Rectangle rect = new Rectangle(750, 750);
+//			
+//			Shape node1Bound = Shape.intersect(rect, node1);
+//			Shape node2Bound = Shape.intersect(rect, node2);
+//			Shape node3Bound = Shape.intersect(rect, node3);
+//			
+//			nodes[0] = node1Bound;
+//			nodes[1] = node2Bound;
+//			nodes[2] = node3Bound;
+//		}
 		
 		Circle node1 = new Circle(trilaterate.node1[0], trilaterate.node1[1], trilaterate.distance[0]);
 		Circle node2 = new Circle(trilaterate.node2[0], trilaterate.node2[1], trilaterate.distance[1]);

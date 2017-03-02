@@ -11,37 +11,7 @@ public class Main extends Application {
 	public static final int WIDTH = 1280;
 	public static final int HEIGHT = 960;
 	public static final int DETAILS_BUTTONS = 3;
-	
-	public double[] distances1 = new double[] {375, 530.33, 530.33};
-	double[] node1 = new double[] {375, 0, 0};
-	double[] node2 = new double[] {0, 750, 0};
-	double[] node3 = new double[] {750, 750, 0};
-	
-	public double[] distances2 = new double[] {375, 530.33, 530.33};
-	double[] node4 = new double[] {375, 0, 0};
-	double[] node5 = new double[] {0, 750, 0};
-	double[] node6 = new double[] {750, 750, 0};
-	
-	public double[] distances3 = new double[] {375, 530.33, 530.33};
-	double[] node7 = new double[] {375, 0, 0};
-	double[] node8 = new double[] {0, 750, 0};
-	double[] node9 = new double[] {750, 750, 0};
-	
-	public double[] distances4 = new double[] {375, 530.33, 530.33};
-	double[] node10 = new double[] {375, 0, 0};
-	double[] node11 = new double[] {0, 750, 0};
-	double[] node12 = new double[] {750, 750, 0};
-	
-	public double[] distances5 = new double[] {375, 530.33, 530.33};
-	double[] node13 = new double[] {375, 0, 0};
-	double[] node14 = new double[] {0, 750, 0};
-	double[] node15 = new double[] {750, 750, 0};
-	
-	double[][] nodeArr1 = {node1, node4, node7, node10, node13};
-	double[][] nodeArr2 = {node2, node5, node8, node11, node14};
-	double[][] nodeArr3 = {node3, node6, node9, node12, node15};
-	double[][] distArr1 = {distances1, distances2, distances3, distances4, distances5};
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 		try {
