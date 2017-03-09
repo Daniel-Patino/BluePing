@@ -23,7 +23,7 @@ public class Main extends Application {
 			RealVector[] dots = test.trilateration3DExact();		// Used to determine the user Pos
 			
 			/* Creates the Coordinate Scene */
-			CoordinateScene coordScene = new CoordinateScene(test, dots, false);
+			CoordinateScene coordScene = new CoordinateScene(test, dots, true);
 			
 			/* Creates the Details Scene */
 			DetailsScene detScene = new DetailsScene(DETAILS_BUTTONS);

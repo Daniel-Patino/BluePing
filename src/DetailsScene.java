@@ -1,5 +1,9 @@
+import javafx.geometry.HPos;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -36,13 +40,23 @@ public class DetailsScene {
 		detailsScene.setTop(optionsTabs);
 		detailsScene.setMaxSize(Main.WIDTH - 750, Main.HEIGHT - (Main.HEIGHT - 750));
 		detailsScene.setStyle("-fx-border-color: red;");
-		
+		formatGridPane();
 		someRandomPane.setStyle("-fx-border-color: green;");
 		someRandomPane.setMaxSize(Main.WIDTH - 775, Main.HEIGHT - (Main.HEIGHT - 700));
 		
 		someEvent();
 		
 		detailsScene.setCenter(someRandomPane);
+	}
+	
+	private void formatGridPane()
+	{
+		someRandomPane.setStyle("-fx-border-color: blue; -fx-border-width: 5;");
+		someRandomPane.setGridLinesVisible(true);
+		someRandomPane.setAlignment(Pos.TOP_CENTER);
+		someRandomPane.getColumnConstraints().add(new ColumnConstraints((Main.WIDTH - 775) / 3));
+		someRandomPane.getColumnConstraints().add(new ColumnConstraints((Main.WIDTH - 775) / 3));
+		someRandomPane.getColumnConstraints().add(new ColumnConstraints((Main.WIDTH - 775) / 3));
 	}
 	
 	/**
@@ -60,7 +74,6 @@ public class DetailsScene {
 		buttons[2] = new Button("Duration");
 		
 		for(int i = 0; i < numberOfButtons; i++){
-			//buttons[i] = new Button("Customers");
 			buttons[i].setPrefWidth((Main.WIDTH - 750) / numberOfButtons);
 		}
 		
@@ -70,30 +83,40 @@ public class DetailsScene {
 	private void someEvent()
 	{
 		buttons[0].setOnMouseClicked(e-> {
+			
+			while(someRandomPane.getChildren().size() != 0){
+				someRandomPane.getChildren().remove(0);
+			}
+			
 			someRandomPane.setStyle("-fx-border-color: blue; -fx-border-width: 5;");
-			Text text1 = new Text("Customer One: ");
-			Text text2 = new Text("Customer Two: ");
-			Text text3 = new Text("Customer Three: ");
-			Text text4 = new Text("Customer Four: ");
-			Text text5 = new Text("Customer Five: ");
-			Text text6 = new Text("Customer Six: ");
+			
+			Text text1 = new Text("ID: Yoshi");
+			Text text2 = new Text("ID: Megaman");
+			Text text3 = new Text("Loc: DiscoArea");
+			Text text4 = new Text("Loc: Bar");
+			Text text5 = new Text("Dur: Bar");
+			Text text6 = new Text("Dur: Magical Rainforest");
+			
 			someRandomPane.add(text1, 0, 0);
 			someRandomPane.add(text2, 0, 1);
-			someRandomPane.add(text3, 0, 2);
-			someRandomPane.add(text4, 0, 3);
-			someRandomPane.add(text5, 0, 4);
-			someRandomPane.add(text6, 0, 5);
+			someRandomPane.add(text3, 1, 0);
+			someRandomPane.add(text4, 1, 1);
+			someRandomPane.add(text5, 2, 0);
+			someRandomPane.add(text6, 2, 1);
 		});
 		
 		buttons[1].setOnMouseClicked(e-> {
 			someRandomPane.setStyle("-fx-border-color: orange; -fx-border-width: 10;");
-			if(someRandomPane.getChildren().size() != 0){
+			while(someRandomPane.getChildren().size() != 0){
 				someRandomPane.getChildren().remove(0);
 			}
 		});
 		
 		buttons[2].setOnMouseClicked(e-> {
 			someRandomPane.setStyle("-fx-border-color: red; -fx-border-width: 15;");
+			while(someRandomPane.getChildren().size() != 0){
+				someRandomPane.getChildren().remove(0);
+			}
 		});
 	}
 	

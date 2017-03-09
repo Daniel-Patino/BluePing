@@ -1,3 +1,5 @@
+import java.util.Random;
+
 import org.apache.commons.math3.linear.RealVector;
 
 import javafx.scene.layout.Pane;
@@ -17,7 +19,7 @@ public class CoordinateScene{
 	private RealVector[] pos;
 	
 	public Pane coordinatePane;
-	
+	public Random rand;
 	/**
 	 * 
 	 * 
@@ -29,20 +31,14 @@ public class CoordinateScene{
 	{
 		this.trilaterate = trilaterate;
 		this.pos = pos;
-		Shape[] nodes = nodes(nodesVisible);
-		setPane();
-		
-		Circle yoshi = new Circle(75, 750/2, 10, Color.LIGHTGREEN);
-		Circle flash = new Circle(235, 375, 10, Color.DARKRED);
-		Circle megaman = new Circle(235, 300, 10, Color.ORANGE);
-		Circle spiderman = new Circle(570, 170, 10, Color.RED);
-		Circle batjoker = new Circle(675, 100, 10, Color.GREEN);
-		Circle dano = new Circle(630, 630, 10, Color.PURPLE);
-		coordinatePane.getChildren().addAll(yoshi, flash, megaman, spiderman, batjoker, dano);
+		definePane();
 		
 		Circle[] circles = centerCircleArr(10, Color.BLUE);
-		for(int i = 0; i < circles.length; i++){
-			//coordinatePane.getChildren().add(circles[i]);
+		Shape[][] nodes = nodes(nodesVisible);
+		
+		for(int i = 0; i < trilaterate.distances.length; i++){
+			coordinatePane.getChildren().add(circles[i]);
+			coordinatePane.getChildren().addAll(nodes[i][0], nodes[i][1], nodes[i][2]);
 		}
 	}
 	
@@ -51,47 +47,31 @@ public class CoordinateScene{
 	 * @param nodesVisible
 	 * @return
 	 */
-	private Shape[] nodes(boolean nodesVisible)
+	private Shape[][] nodes(boolean nodesVisible)
 	{
-		//Shape[][] nodes = new Shape[trilaterate.distances.length][3];
-		Shape[] nodes = new Shape[3];
-//		for(int i = 0; i < trilaterate.distances.length; i++){
-//			Circle node1 = new Circle(trilaterate.node1[0], trilaterate.node1[1], trilaterate.distances[i][0]);
-//			Circle node2 = new Circle(trilaterate.node2[0], trilaterate.node2[1], trilaterate.distances[i][1]);
-//			Circle node3 = new Circle(trilaterate.node3[0], trilaterate.node3[1], trilaterate.distances[i][2]);
-//			node1 = defineNodes(node1, nodesVisible);
-//			node2 = defineNodes(node2, nodesVisible);
-//			node3 = defineNodes(node3, nodesVisible);
-//			
-//			Rectangle rect = new Rectangle(750, 750);
-//			
-//			Shape node1Bound = Shape.intersect(rect, node1);
-//			Shape node2Bound = Shape.intersect(rect, node2);
-//			Shape node3Bound = Shape.intersect(rect, node3);
-//			
-//			nodes[0] = node1Bound;
-//			nodes[1] = node2Bound;
-//			nodes[2] = node3Bound;
-//		}
-		
-		Circle node1 = new Circle(trilaterate.node1[0], trilaterate.node1[1], trilaterate.distance[0]);
-		Circle node2 = new Circle(trilaterate.node2[0], trilaterate.node2[1], trilaterate.distance[1]);
-		Circle node3 = new Circle(trilaterate.node3[0], trilaterate.node3[1], trilaterate.distance[2]);
-		
-		node1 = defineNodes(node1, nodesVisible);
-		node2 = defineNodes(node2, nodesVisible);
-		node3 = defineNodes(node3, nodesVisible);
-		
-		Rectangle rect = new Rectangle(750, 750);
-		
-		Shape node1Bound = Shape.intersect(rect, node1);
-		Shape node2Bound = Shape.intersect(rect, node2);
-		Shape node3Bound = Shape.intersect(rect, node3);
-		
-		nodes[0] = node1Bound;
-		nodes[1] = node2Bound;
-		nodes[2] = node3Bound;
-		
+		Shape[][] nodes = new Shape[trilaterate.distances.length][3];
+
+		for(int i = 0; i < trilaterate.distances.length; i++){
+			
+			Circle node1 = new Circle(trilaterate.node1[0], trilaterate.node1[1], trilaterate.distances[i][0]);
+			Circle node2 = new Circle(trilaterate.node2[0], trilaterate.node2[1], trilaterate.distances[i][1]);
+			Circle node3 = new Circle(trilaterate.node3[0], trilaterate.node3[1], trilaterate.distances[i][2]);
+			
+			Rectangle rect = new Rectangle(750, 750);
+			
+			Shape node1Bound = Shape.intersect(rect, node1);
+			Shape node2Bound = Shape.intersect(rect, node2);
+			Shape node3Bound = Shape.intersect(rect, node3);
+			
+			node1Bound = defineNodes(node1Bound, nodesVisible);
+			node2Bound = defineNodes(node2Bound, nodesVisible);
+			node3Bound = defineNodes(node3Bound, nodesVisible);
+			
+			nodes[i][0] = node1Bound;
+			nodes[i][1] = node2Bound;
+			nodes[i][2] = node3Bound;
+		}
+
 		return nodes;
 	}
 	
@@ -105,7 +85,8 @@ public class CoordinateScene{
 	{
 		Circle[] positions = new Circle[pos.length];
 		for(int i = 0; i < positions.length; i++){
-			positions[i] = new Circle(pos[i].getEntry(0), pos[i].getEntry(1), cirSize, color);
+			Color randomColor = new Color((Math.random()), Math.random(), Math.random(), 1);
+			positions[i] = new Circle(pos[i].getEntry(0), pos[i].getEntry(1), cirSize, randomColor);
 		}
 		
 		return positions;
@@ -117,23 +98,28 @@ public class CoordinateScene{
 	 * @param nodesVisible
 	 * @return
 	 */
-	private Circle defineNodes(Circle node, boolean nodesVisible)
+	private Shape defineNodes(Shape node, boolean nodesVisible)
 	{
-		node.setStroke(Color.BLACK);
+		node.setStroke(Color.RED);
 		node.setStrokeWidth(3);
 		node.setFill(null);
 		node.setVisible(nodesVisible);
 		
-		return node;	
+		System.out.println("HELLO");
+		
+		return node;
 	}
 	
 	/**
 	 * 
 	 */
-	private void setPane()
+	private void definePane()
 	{
 		coordinatePane = new Pane();
 		coordinatePane.setMaxSize(750, 750);
 		coordinatePane.setStyle("-fx-border-color: red;");
 	}
+
+	/* Setters and Getters */
+	
 }
