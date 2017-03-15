@@ -1,9 +1,7 @@
-/**
- * Created by dannysuarez on 2/27/17.
- */
-
-public class RSSItoDistance {
-    protected static double calculateDistance(double rssi) {
+public class RSSItoDistance
+{
+    protected static double calculateDistance(double rssi)
+    {
         int txPower = -59;
 
         if (rssi == 0) {

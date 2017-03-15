@@ -42,14 +42,31 @@ public class Main extends Application {
 			primaryStage.setScene(openScene);
 			primaryStage.setResizable(false);
 			primaryStage.show();
-		}
+
+            String url = "jdbc:mysql://localhost:3306/blueping?autoReconnect=true&useSSL=false";
+            String user = "root";
+            String password = "addjteam4";
+
+            Database db = new Database(url, user, password);
+            db.connect();
+            int i = 1;
+
+            while (true) {
+                db.prepareQuery("SELECT RSSI FROM beacon1 WHERE id = (?)");
+                db.setQueryId(i);
+                int rssi1 = db.runIntPrepQuery();
+                RSSItoDistance.calculateDistance(rssi1);
+                i++;
+            }
+        }
 		
 		catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
 	
-	public static void main(String[] args) {
-		launch(args);
+	public static void main(String[] args) throws Exception
+	{
+		//launch(args);
 	}
 }
