@@ -10,7 +10,8 @@ public class TrilaterationTest {
 	
 	public double[][] distances = new double[][]{{375, 530.33, 530.33},  {100, 600.33, 600.33},  {600, 100.33, 100.33}};
 	
-	public RealVector[] trilateration3DExact() throws Exception{
+	public RealVector[] trilateration3DExact() throws Exception
+	{
 		double[][] positions = new double[][] {node1, node2, node3};
 		RealVector[] x = new RealVector[distances.length];
 		
