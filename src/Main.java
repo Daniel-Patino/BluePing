@@ -23,7 +23,7 @@ public class Main extends Application {
 			RealVector[] dots = test.trilateration3DExact();		// Used to determine the user Pos
 			
 			/* Creates the Coordinate Scene */
-			CoordinateScene coordScene = new CoordinateScene(test, dots, true);
+			CoordinateScene coordScene = new CoordinateScene(test, dots, false);
 			
 			/* Creates the Details Scene */
 			DetailsScene detScene = new DetailsScene(DETAILS_BUTTONS);
@@ -57,6 +57,7 @@ public class Main extends Application {
                 db.prepareQuery("SELECT RSSI FROM beacon1 WHERE id = (?)");
                 db.setQueryId(i);
                 int rssi1 = db.runIntPrepQuery();
+                test.idToDistances.put("12-34-56-78-90", new double[]{10, 20, 30});
                 RSSItoDistance.calculateDistance(rssi1);
                 i++;
             }
