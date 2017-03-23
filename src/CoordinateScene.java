@@ -20,6 +20,8 @@ public class CoordinateScene{
 	
 	public Pane coordinatePane;
 	public Random rand;
+	public String[] keys = {"12-34-56-78-90", "23-45-67-89-01", "34-56-78-90-12", "45-67-89-01-23"};
+	
 	/**
 	 * 
 	 * 
@@ -34,9 +36,9 @@ public class CoordinateScene{
 		definePane();
 		
 		Circle[] circles = centerCircleArr(10, Color.BLUE);
-		Shape[][] nodes = nodes(nodesVisible);
+		Shape[][] nodes = nodes(nodesVisible, this.keys);
 		
-		for(int i = 0; i < trilaterate.distances.length; i++){
+		for(int i = 0; i < trilaterate.hashSize(); i++){
 			coordinatePane.getChildren().add(circles[i]);
 			coordinatePane.getChildren().addAll(nodes[i][0], nodes[i][1], nodes[i][2]);
 		}
@@ -47,15 +49,15 @@ public class CoordinateScene{
 	 * @param nodesVisible
 	 * @return
 	 */
-	private Shape[][] nodes(boolean nodesVisible)
+	private Shape[][] nodes(boolean nodesVisible, String[] keys)
 	{
-		Shape[][] nodes = new Shape[trilaterate.distances.length][3];
+		Shape[][] nodes = new Shape[trilaterate.hashSize()][3];
 
-		for(int i = 0; i < trilaterate.distances.length; i++){
+		for(int i = 0; i < trilaterate.hashSize(); i++){
 			
-			Circle node1 = new Circle(trilaterate.node1[0], trilaterate.node1[1], trilaterate.distances[i][0]);
-			Circle node2 = new Circle(trilaterate.node2[0], trilaterate.node2[1], trilaterate.distances[i][1]);
-			Circle node3 = new Circle(trilaterate.node3[0], trilaterate.node3[1], trilaterate.distances[i][2]);
+			Circle node1 = new Circle(trilaterate.node1[0], trilaterate.node1[1], trilaterate.idToDistances.get(keys[i])[0]);
+			Circle node2 = new Circle(trilaterate.node2[0], trilaterate.node2[1], trilaterate.idToDistances.get(keys[i])[1]);
+			Circle node3 = new Circle(trilaterate.node3[0], trilaterate.node3[1], trilaterate.idToDistances.get(keys[i])[2]);
 			
 			Rectangle rect = new Rectangle(750, 750);
 			

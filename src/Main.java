@@ -44,6 +44,7 @@ public class Main extends Application {
 			primaryStage.setTitle("BluePing - Indoor Positioning System");
 			primaryStage.show();
 
+			/* Implements the Database*/
             String url = "jdbc:mysql://localhost:3306/blueping?autoReconnect=true&useSSL=false";
             String user = "root";
             String password = "addjteam4";
@@ -68,6 +69,6 @@ public class Main extends Application {
 	
 	public static void main(String[] args) throws Exception
 	{
-		//launch(args);
+		launch(args);
 	}
 }
