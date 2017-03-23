@@ -104,20 +104,18 @@ public class CoordinateScene{
 		node.setStrokeWidth(3);
 		node.setFill(null);
 		node.setVisible(nodesVisible);
-		
-		System.out.println("HELLO");
-		
+
 		return node;
 	}
 	
 	/**
-	 * 
+	 * Method to keep the constructor clean, will define the design of the pane
 	 */
 	private void definePane()
 	{
 		coordinatePane = new Pane();
 		coordinatePane.setMaxSize(750, 750);
-		coordinatePane.setStyle("-fx-border-color: red;");
+		coordinatePane.setStyle("-fx-border-color: black;");
 	}
 
 	/* Setters and Getters */

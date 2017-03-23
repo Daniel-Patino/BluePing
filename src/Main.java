@@ -41,6 +41,7 @@ public class Main extends Application {
 			/* Shows the Stage */
 			primaryStage.setScene(openScene);
 			primaryStage.setResizable(false);
+			primaryStage.setTitle("BluePing - Indoor Positioning System");
 			primaryStage.show();
 
             String url = "jdbc:mysql://localhost:3306/blueping?autoReconnect=true&useSSL=false";
