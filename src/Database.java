@@ -24,9 +24,9 @@ public class Database {
             e.printStackTrace();
         }
     }
-
-    public ArrayList runStringQuery(String query) throws Exception {
-        ArrayList<String> returnedValues = new ArrayList();
+    
+	public ArrayList<String> runStringQuery(String query) throws Exception {
+        ArrayList<String> returnedValues = new ArrayList<>();
 
         try {
             pst = con.prepareStatement(query);
@@ -37,13 +37,13 @@ public class Database {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            return returnedValues;
         }
+        
+        return returnedValues;
     }
 
-    public ArrayList runIntQuery (String query) throws Exception {
-        ArrayList<Integer> returnedValues = new ArrayList();
+	public ArrayList<Integer> runIntQuery (String query) throws Exception {
+        ArrayList<Integer> returnedValues = new ArrayList<>();
 
         try {
             pst = con.prepareStatement(query);
@@ -54,9 +54,9 @@ public class Database {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            return returnedValues;
         }
+        
+        return returnedValues;
     }
 
     public void prepareQuery (String query) throws Exception {
@@ -75,7 +75,7 @@ public class Database {
         }
     }
 
-    public String runStringPrepQuery() throws Exception {
+	public String runStringPrepQuery() throws Exception {
         String returnedValue = null;
 
         try {
@@ -86,12 +86,11 @@ public class Database {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            return returnedValue;
         }
+        return returnedValue;
     }
 
-    public int runIntPrepQuery() throws Exception {
+	public int runIntPrepQuery() throws Exception {
         int returnedValue = 0;
 
         try {
@@ -102,12 +101,12 @@ public class Database {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            return returnedValue;
-        }
+        } 
+        return returnedValue;
+
     }
 
-    public int count() throws Exception {
+	public int count() throws Exception {
         int returnedValue = 0;
 
         try {
@@ -119,9 +118,8 @@ public class Database {
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } finally {
-            return returnedValue;
-        }
+        } 
+        return returnedValue;
     }
 
     public void returnAll() throws Exception {

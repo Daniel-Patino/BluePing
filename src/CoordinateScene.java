@@ -121,5 +121,4 @@ public class CoordinateScene{
 	}
 
 	/* Setters and Getters */
-	
 }

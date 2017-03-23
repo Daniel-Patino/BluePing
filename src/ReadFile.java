@@ -19,6 +19,8 @@ public class ReadFile {
             while ((s = reader.readLine()) != null) {
                 fileInput.add(s);
             }
+            
+            reader.close();
         }
 
         catch (FileNotFoundException e) {

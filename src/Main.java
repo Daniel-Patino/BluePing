@@ -15,7 +15,7 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			ReadFile ourRead = new ReadFile();
+			//ReadFile ourRead = new ReadFile();
 			
 			/* Instantiate */
 			StackPane masterStack = new StackPane();			// What the user will ultimately see
