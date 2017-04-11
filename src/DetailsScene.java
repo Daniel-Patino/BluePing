@@ -106,16 +106,6 @@ public class DetailsScene {
 		}
 	}
 	
-	private int strCompare(String a, String b)
-	{
-		return (a).compareTo(b);
-	}
-	
-	private int intCompare(int a, int b)
-	{
-		return a - b;
-	}
-	
 	/**
 	 * Creates the buttons for the HBox
 	 * 
