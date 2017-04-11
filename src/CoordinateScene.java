@@ -1,3 +1,5 @@
+import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.Random;
 
 import org.apache.commons.math3.linear.RealVector;
@@ -13,16 +15,18 @@ import javafx.scene.shape.Shape;
  * @author Daniel
  *
  */
-public class CoordinateScene{
-
+public class CoordinateScene
+{
 	private TrilaterationTest trilaterate;
 	private RealVector[] pos;
 	
 	public Pane coordinatePane;
 	public Random rand;
-	public String[] keys = {"12-34-56-78-90", "23-45-67-89-01", "34-56-78-90-12", "45-67-89-01-23",
-							"12:34:56:78:90", "23:45:67:89:01", "34:56:78:90:12", "45:67:89:01:23",
-							"12:34:56-78-90", "23:45:67-89-01", "34:56:78-90-12", "45:67:89-01-23"};
+	public String[] keys = {
+			"12-34-56-78-90", "23-45-67-89-01", "34-56-78-90-12", "45-67-89-01-23",
+			"12:34:56:78:90", "23:45:67:89:01", "34:56:78:90:12", "45:67:89:01:23",
+			"12:34:56-78-90", "23:45:67-89-01", "34:56:78-90-12", "45:67:89-01-23"
+			};
 	
 	/**
 	 * 
@@ -38,7 +42,7 @@ public class CoordinateScene{
 		definePane();
 		
 		Circle[] circles = centerCircleArr(10, Color.BLUE);
-		Shape[][] nodes = nodes(nodesVisible, this.keys);
+		Shape[][] nodes = nodes(nodesVisible, trilaterate.idToDistances);
 		
 		for(int i = 0; i < trilaterate.hashSize(); i++){
 			coordinatePane.getChildren().add(circles[i]);
@@ -51,15 +55,20 @@ public class CoordinateScene{
 	 * @param nodesVisible
 	 * @return
 	 */
-	private Shape[][] nodes(boolean nodesVisible, String[] keys)
+	private Shape[][] nodes(boolean nodesVisible, HashMap<String, double[]> values)
 	{
 		Shape[][] nodes = new Shape[trilaterate.hashSize()][3];
 
-		for(int i = 0; i < trilaterate.hashSize(); i++){
+		int i = 0;
+		
+		for (Entry<String, double[]> entry : trilaterate.idToDistances.entrySet()) {
 			
-			Circle node1 = new Circle(trilaterate.node1[0], trilaterate.node1[1], trilaterate.idToDistances.get(keys[i])[0]);
-			Circle node2 = new Circle(trilaterate.node2[0], trilaterate.node2[1], trilaterate.idToDistances.get(keys[i])[1]);
-			Circle node3 = new Circle(trilaterate.node3[0], trilaterate.node3[1], trilaterate.idToDistances.get(keys[i])[2]);
+			String key = entry.getKey();
+			double[] nodeDistances = entry.getValue();
+			
+			Circle node1 = new Circle(trilaterate.node1[0], trilaterate.node1[1], nodeDistances[0]);
+			Circle node2 = new Circle(trilaterate.node2[0], trilaterate.node2[1], nodeDistances[1]);
+			Circle node3 = new Circle(trilaterate.node3[0], trilaterate.node3[1], nodeDistances[2]);
 			
 			Rectangle rect = new Rectangle(750, 750);
 			
@@ -74,8 +83,10 @@ public class CoordinateScene{
 			nodes[i][0] = node1Bound;
 			nodes[i][1] = node2Bound;
 			nodes[i][2] = node3Bound;
+			
+			i++;
 		}
-
+		
 		return nodes;
 	}
 	

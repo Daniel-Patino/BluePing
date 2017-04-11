@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
@@ -29,6 +31,10 @@ public class DetailsScene {
 
 	public Button[] buttons;
 	
+	public ArrayList<Text> customerID = new ArrayList<>();
+	public ArrayList<Text> location = new ArrayList<>();
+	public ArrayList<Text> timeSpent = new ArrayList<>();
+	
 	/**
 	 * The constructor will create a DetailsScene with the parameters
 	 */
@@ -41,6 +47,24 @@ public class DetailsScene {
 		formatGridPane();
 		someRandomPane.setStyle("-fx-border-color: green;");
 		someRandomPane.setMaxSize(Main.WIDTH - 775, Main.HEIGHT - (Main.HEIGHT - 700));
+		
+		customerID.add(new Text("Hello"));
+		customerID.add(new Text("World"));
+		customerID.add(new Text("Mojo"));
+		customerID.add(new Text("Donut"));
+		customerID.add(new Text("Delicious"));
+		
+		location.add(new Text("Hello"));
+		location.add(new Text("World"));
+		location.add(new Text("Mojo"));
+		location.add(new Text("Donut"));
+		location.add(new Text("Delicious"));
+		
+		timeSpent.add(new Text("Hello"));
+		timeSpent.add(new Text("World"));
+		timeSpent.add(new Text("Mojo"));
+		timeSpent.add(new Text("Donut"));
+		timeSpent.add(new Text("Delicious"));
 		
 		someEvent();
 		
@@ -67,9 +91,9 @@ public class DetailsScene {
 		
 		Button[] buttons = new Button[numberOfButtons];
 		
-		buttons[0] = new Button("Customers");
-		buttons[1] = new Button("Location");
-		buttons[2] = new Button("Duration");
+		buttons[0] = new Button("Node 1");
+		buttons[1] = new Button("Node 2");
+		buttons[2] = new Button("Node 3");
 		
 		for(int i = 0; i < numberOfButtons; i++){
 			buttons[i].setPrefWidth((Main.WIDTH - 750) / numberOfButtons);
@@ -88,19 +112,20 @@ public class DetailsScene {
 			
 			someRandomPane.setStyle("-fx-border-color: blue; -fx-border-width: 5;");
 			
-			Text text1 = new Text("ID: Yoshi");
-			Text text2 = new Text("ID: Megaman");
-			Text text3 = new Text("Loc: DiscoArea");
-			Text text4 = new Text("Loc: Bar");
-			Text text5 = new Text("Dur: Bar");
-			Text text6 = new Text("Dur: Magical Rainforest");
+			Text textA = new Text("Customer ID");
+			Text textB = new Text("Location");
+			Text textC = new Text("Time Spent");
 			
-			someRandomPane.add(text1, 0, 0);
-			someRandomPane.add(text2, 0, 1);
-			someRandomPane.add(text3, 1, 0);
-			someRandomPane.add(text4, 1, 1);
-			someRandomPane.add(text5, 2, 0);
-			someRandomPane.add(text6, 2, 1);
+			someRandomPane.add(textA, 0, 0);
+			someRandomPane.add(textB, 1, 0);
+			someRandomPane.add(textC, 2, 0);
+			
+			for(int i = 0; i < customerID.size(); i++){
+				someRandomPane.add(customerID.get(i), 0, i + 1);
+				someRandomPane.add(location.get(i), 1, i + 1);
+				someRandomPane.add(timeSpent.get(i), 2, i + 1);
+			}
+			
 		});
 		
 		buttons[1].setOnMouseClicked(e-> {
