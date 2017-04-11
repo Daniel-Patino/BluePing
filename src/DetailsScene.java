@@ -1,4 +1,7 @@
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -30,10 +33,8 @@ public class DetailsScene {
 	private GridPane someRandomPane = new GridPane();
 
 	public Button[] buttons;
-	
-	public ArrayList<Text> customerID = new ArrayList<>();
-	public ArrayList<Text> location = new ArrayList<>();
-	public ArrayList<Text> timeSpent = new ArrayList<>();
+	public ArrayList<Text[]> customerInfo = new ArrayList<>();
+	private boolean flagID = true;
 	
 	/**
 	 * The constructor will create a DetailsScene with the parameters
@@ -48,24 +49,19 @@ public class DetailsScene {
 		someRandomPane.setStyle("-fx-border-color: green;");
 		someRandomPane.setMaxSize(Main.WIDTH - 775, Main.HEIGHT - (Main.HEIGHT - 700));
 		
-		customerID.add(new Text("Hello"));
-		customerID.add(new Text("World"));
-		customerID.add(new Text("Mojo"));
-		customerID.add(new Text("Donut"));
-		customerID.add(new Text("Delicious"));
+		Text[] customerTextA = {new Text("A"), new Text("E"), new Text("D")};
+		Text[] customerTextB = {new Text("B"), new Text("D"), new Text("E")};
+		Text[] customerTextC = {new Text("C"), new Text("C"), new Text("A")};
+		Text[] customerTextD = {new Text("D"), new Text("B"), new Text("C")};
+		Text[] customerTextE = {new Text("E"), new Text("A"), new Text("B")};
 		
-		location.add(new Text("Hello"));
-		location.add(new Text("World"));
-		location.add(new Text("Mojo"));
-		location.add(new Text("Donut"));
-		location.add(new Text("Delicious"));
+		customerInfo.add(customerTextA);
+		customerInfo.add(customerTextB);
+		customerInfo.add(customerTextC);
+		customerInfo.add(customerTextD);
+		customerInfo.add(customerTextE);
 		
-		timeSpent.add(new Text("Hello"));
-		timeSpent.add(new Text("World"));
-		timeSpent.add(new Text("Mojo"));
-		timeSpent.add(new Text("Donut"));
-		timeSpent.add(new Text("Delicious"));
-		
+		fillChart();
 		someEvent();
 		
 		detailsScene.setCenter(someRandomPane);
@@ -81,6 +77,45 @@ public class DetailsScene {
 		someRandomPane.getColumnConstraints().add(new ColumnConstraints((Main.WIDTH - 775) / 3));
 	}
 	
+	private void fillChart()
+	{
+		while(someRandomPane.getChildren().size() != 0){
+			someRandomPane.getChildren().remove(0);
+		}
+		
+		//someRandomPane.setStyle("-fx-border-color: blue; -fx-border-width: 5;");
+		
+		Text textA = new Text("Customer ID");
+		Text textB = new Text("Location");
+		Text textC = new Text("Time Spent");
+		
+		someRandomPane.add(textA, 0, 0);
+		someRandomPane.add(textB, 1, 0);
+		someRandomPane.add(textC, 2, 0);
+		
+		for(int i = 0; i < customerInfo.size(); i++){
+			try
+			{
+				someRandomPane.add(customerInfo.get(i)[0], 0, i + 1);
+				someRandomPane.add(customerInfo.get(i)[1], 1, i + 1);
+				someRandomPane.add(customerInfo.get(i)[2], 2, i + 1);
+			}
+			catch (Exception err) {
+				System.out.println(err + "Customer Missing Data: Discarded.");
+			}
+		}
+	}
+	
+	private int strCompare(String a, String b)
+	{
+		return (a).compareTo(b);
+	}
+	
+	private int intCompare(int a, int b)
+	{
+		return a - b;
+	}
+	
 	/**
 	 * Creates the buttons for the HBox
 	 * 
@@ -91,9 +126,9 @@ public class DetailsScene {
 		
 		Button[] buttons = new Button[numberOfButtons];
 		
-		buttons[0] = new Button("Node 1");
-		buttons[1] = new Button("Node 2");
-		buttons[2] = new Button("Node 3");
+		buttons[0] = new Button("Sort ID");
+		buttons[1] = new Button("Sort Lo");
+		buttons[2] = new Button("Sort TS");
 		
 		for(int i = 0; i < numberOfButtons; i++){
 			buttons[i].setPrefWidth((Main.WIDTH - 750) / numberOfButtons);
@@ -103,29 +138,33 @@ public class DetailsScene {
 	}
 	
 	private void someEvent()
-	{
+	{	
 		buttons[0].setOnMouseClicked(e-> {
-			
+			someRandomPane.setStyle("-fx-border-color: blue; -fx-border-width: 5;");
 			while(someRandomPane.getChildren().size() != 0){
 				someRandomPane.getChildren().remove(0);
 			}
 			
-			someRandomPane.setStyle("-fx-border-color: blue; -fx-border-width: 5;");
-			
-			Text textA = new Text("Customer ID");
-			Text textB = new Text("Location");
-			Text textC = new Text("Time Spent");
-			
-			someRandomPane.add(textA, 0, 0);
-			someRandomPane.add(textB, 1, 0);
-			someRandomPane.add(textC, 2, 0);
-			
-			for(int i = 0; i < customerID.size(); i++){
-				someRandomPane.add(customerID.get(i), 0, i + 1);
-				someRandomPane.add(location.get(i), 1, i + 1);
-				someRandomPane.add(timeSpent.get(i), 2, i + 1);
+			if(flagID){
+				Collections.sort(customerInfo, new Comparator<Text[]>(){
+					@Override
+					public int compare(Text[] o1, Text[] o2) {
+						// TODO Auto-generated method stub
+						return o1[0].getText().compareTo(o2[0].getText());
+					}});
+				flagID = !flagID;
+			} 
+			else {
+				Collections.sort(customerInfo, new Comparator<Text[]>(){
+					@Override
+					public int compare(Text[] o1, Text[] o2) {
+						// TODO Auto-generated method stub
+						return o1[0].getText().compareTo(o2[0].getText());
+					}});
+				flagID = !flagID;
 			}
 			
+			fillChart();
 		});
 		
 		buttons[1].setOnMouseClicked(e-> {
@@ -133,6 +172,7 @@ public class DetailsScene {
 			while(someRandomPane.getChildren().size() != 0){
 				someRandomPane.getChildren().remove(0);
 			}
+			fillChart();
 		});
 		
 		buttons[2].setOnMouseClicked(e-> {
@@ -140,6 +180,7 @@ public class DetailsScene {
 			while(someRandomPane.getChildren().size() != 0){
 				someRandomPane.getChildren().remove(0);
 			}
+			fillChart();
 		});
 	}
 	

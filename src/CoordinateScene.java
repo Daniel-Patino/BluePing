@@ -22,11 +22,6 @@ public class CoordinateScene
 	
 	public Pane coordinatePane;
 	public Random rand;
-	public String[] keys = {
-			"12-34-56-78-90", "23-45-67-89-01", "34-56-78-90-12", "45-67-89-01-23",
-			"12:34:56:78:90", "23:45:67:89:01", "34:56:78:90:12", "45:67:89:01:23",
-			"12:34:56-78-90", "23:45:67-89-01", "34:56:78-90-12", "45:67:89-01-23"
-			};
 	
 	/**
 	 * 
@@ -63,7 +58,6 @@ public class CoordinateScene
 		
 		for (Entry<String, double[]> entry : trilaterate.idToDistances.entrySet()) {
 			
-			String key = entry.getKey();
 			double[] nodeDistances = entry.getValue();
 			
 			Circle node1 = new Circle(trilaterate.node1[0], trilaterate.node1[1], nodeDistances[0]);

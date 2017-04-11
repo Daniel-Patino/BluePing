@@ -33,10 +33,10 @@ public class TrilaterationTest {
 		idToDistances.put("34-56-78-90-12", new double[]{200, 200, 200});
 		idToDistances.put("45-67-89-01-23", new double[]{300, 300, 300});
 		
-		idToDistances.put("12:34:56-78-90", new double[]{450, 300, 100});
-		idToDistances.put("23:45:67-89-01", new double[]{500, 500, 100});
-		idToDistances.put("34:56:78-90-12", new double[]{600, 100, 300});
-		idToDistances.put("45:67:89-01-23", new double[]{700, 300, 450});
+		idToDistances.put("1234:56-78-90", new double[]{450, 300, 100});
+		idToDistances.put("2345:67-89-01", new double[]{500, 500, 100});
+		idToDistances.put("3456:78-90-12", new double[]{600, 100, 300});
+		idToDistances.put("4567:89-01-23", new double[]{700, 300, 450});
 		
 		RealVector[] x = new RealVector[idToDistances.size()];
 		
