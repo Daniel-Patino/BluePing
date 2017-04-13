@@ -123,7 +123,7 @@ public class CoordinateScene
 	private void definePane()
 	{
 		coordinatePane = new Pane();
-		coordinatePane.setMaxSize(750, 750);
+		coordinatePane.setMaxSize(500, 500);
 		coordinatePane.setStyle("-fx-border-color: black;");
 	}
 

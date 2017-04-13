@@ -8,9 +8,9 @@ import org.apache.commons.math3.linear.RealVector;
 
 public class TrilaterationTest {
 
-	public double[] node1 = new double[] {375, 0, 0};
-	public double[] node2 = new double[] {0, 750, 0};
-	public double[] node3 = new double[] {750, 750, 0};
+	public double[] node1 = new double[] {250, 0, 0};
+	public double[] node2 = new double[] {0, 500, 0};
+	public double[] node3 = new double[] {500, 500, 0};
 
 	public HashMap<String, double[]> idToDistances = new HashMap<>();
 	
