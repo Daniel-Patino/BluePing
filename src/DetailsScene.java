@@ -35,6 +35,8 @@ public class DetailsScene {
 	public Button[] buttons;
 	public ArrayList<Text[]> customerInfo = new ArrayList<>();
 	private boolean flagID = true;
+	private boolean flagLO = true;
+	private boolean flagTI = true;
 	
 	/**
 	 * The constructor will create a DetailsScene with the parameters
@@ -130,46 +132,65 @@ public class DetailsScene {
 	private void someEvent()
 	{	
 		buttons[0].setOnMouseClicked(e-> {
+			
+			flagID = !flagID;
 			someRandomPane.setStyle("-fx-border-color: blue; -fx-border-width: 5;");
 			while(someRandomPane.getChildren().size() != 0){
 				someRandomPane.getChildren().remove(0);
 			}
+
 			
-			if(flagID){
-				Collections.sort(customerInfo, new Comparator<Text[]>(){
-					@Override
-					public int compare(Text[] o1, Text[] o2) {
-						// TODO Auto-generated method stub
+			Collections.sort(customerInfo, new Comparator<Text[]>(){
+				@Override
+				public int compare(Text[] o1, Text[] o2) {
+					// TODO Auto-generated method stub
+					if(flagID)
+						return o2[0].getText().compareTo(o1[0].getText());
+					else
 						return o1[0].getText().compareTo(o2[0].getText());
-					}});
-				flagID = !flagID;
-			} 
-			else {
-				Collections.sort(customerInfo, new Comparator<Text[]>(){
-					@Override
-					public int compare(Text[] o1, Text[] o2) {
-						// TODO Auto-generated method stub
-						return o1[0].getText().compareTo(o2[0].getText());
-					}});
-				flagID = !flagID;
-			}
-			
+				}});
+				
 			fillChart();
 		});
 		
 		buttons[1].setOnMouseClicked(e-> {
+			
+			flagLO = !flagLO;
 			someRandomPane.setStyle("-fx-border-color: orange; -fx-border-width: 10;");
 			while(someRandomPane.getChildren().size() != 0){
 				someRandomPane.getChildren().remove(0);
 			}
+			
+			Collections.sort(customerInfo, new Comparator<Text[]>(){
+				@Override
+				public int compare(Text[] o1, Text[] o2) {
+					// TODO Auto-generated method stub
+					if(flagLO)
+						return o2[1].getText().compareTo(o1[1].getText());
+					else
+						return o1[1].getText().compareTo(o2[1].getText());
+				}});
+			
 			fillChart();
 		});
 		
 		buttons[2].setOnMouseClicked(e-> {
+			flagTI = !flagTI;
 			someRandomPane.setStyle("-fx-border-color: red; -fx-border-width: 15;");
 			while(someRandomPane.getChildren().size() != 0){
 				someRandomPane.getChildren().remove(0);
 			}
+			
+			Collections.sort(customerInfo, new Comparator<Text[]>(){
+				@Override
+				public int compare(Text[] o1, Text[] o2) {
+					// TODO Auto-generated method stub
+					if(flagTI)
+						return o2[2].getText().compareTo(o1[2].getText());
+					else
+						return o1[2].getText().compareTo(o2[2].getText());
+				}});
+			
 			fillChart();
 		});
 	}
