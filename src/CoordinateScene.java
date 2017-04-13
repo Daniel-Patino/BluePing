@@ -64,7 +64,7 @@ public class CoordinateScene
 			Circle node2 = new Circle(trilaterate.node2[0], trilaterate.node2[1], nodeDistances[1]);
 			Circle node3 = new Circle(trilaterate.node3[0], trilaterate.node3[1], nodeDistances[2]);
 			
-			Rectangle rect = new Rectangle(750, 750);
+			Rectangle rect = new Rectangle(700, 700);
 			
 			Shape node1Bound = Shape.intersect(rect, node1);
 			Shape node2Bound = Shape.intersect(rect, node2);
@@ -123,7 +123,7 @@ public class CoordinateScene
 	private void definePane()
 	{
 		coordinatePane = new Pane();
-		coordinatePane.setMaxSize(500, 500);
+		coordinatePane.setMaxSize(700, 700);
 		coordinatePane.setStyle("-fx-border-color: black;");
 	}
 

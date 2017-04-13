@@ -52,7 +52,9 @@ public class Main extends Application {
 
             double rssi1, rssi2, rssi3;
             rssi1 = rssi2 = rssi3 = 0;
-            
+
+            String mac = "";
+
 			/* Implements the Database*/
             String url = "jdbc:mysql://localhost:3306/blueping?autoReconnect=true&useSSL=false";
             String user = "root";
@@ -64,11 +66,11 @@ public class Main extends Application {
             ArrayList<Integer> size = db.runIntQuery("SELECT COUNT(*) FROM `beacon1`");
             System.out.println(size.get(0));
 
-                        
-            for (int i = 1; i <= 10; i++) {
+            for (int i = size.get(0) - 50; i <= size.get(0); i++) {
+
                 db.prepareQuery("SELECT MAC FROM beacon1 WHERE id = (?)");
                 db.setQueryId(i);
-                String mac = db.runStringPrepQuery();
+                mac = db.runStringPrepQuery();
                 //System.out.println(mac);
 
                 db.prepareQuery("SELECT RSSI FROM beacon1 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 1");
