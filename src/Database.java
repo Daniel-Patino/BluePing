@@ -75,7 +75,15 @@ public class Database {
         }
     }
 
-	public String runStringPrepQuery() throws Exception {
+    public void setQueryId (String id) throws Exception {
+        try {
+            pst.setString(1, id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public String runStringPrepQuery() throws Exception {
         String returnedValue = null;
 
         try {

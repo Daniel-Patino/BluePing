@@ -18,8 +18,8 @@ public class TrilaterationTest {
 	{
 		double[][] positions = new double[][] {node1, node2, node3};
 		
-		idToDistances.put("12-34-56-78-90", new double[]{10, 30, 50});
-		idToDistances.put("23-45-67-89-01", new double[]{20, 30, 40});
+		//idToDistances.put("24:4b:03:df:a0:82", new double[]{2.246586021115714, 9.521557509550805, 7.852880042745979});
+		/*idToDistances.put("23-45-67-89-01", new double[]{20, 30, 40});
 		idToDistances.put("34-56-78-90-12", new double[]{30, 60, 90});
 		idToDistances.put("45-67-89-01-23", new double[]{40, 80, 120});
 		
@@ -36,7 +36,7 @@ public class TrilaterationTest {
 		idToDistances.put("1234:56-78-90", new double[]{450, 300, 100});
 		idToDistances.put("2345:67-89-01", new double[]{500, 500, 100});
 		idToDistances.put("3456:78-90-12", new double[]{600, 100, 300});
-		idToDistances.put("4567:89-01-23", new double[]{700, 300, 450});
+		idToDistances.put("4567:89-01-23", new double[]{700, 300, 450});*/
 		
 		RealVector[] x = new RealVector[idToDistances.size()];
 		
