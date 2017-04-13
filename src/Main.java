@@ -65,7 +65,7 @@ public class Main extends Application {
 
             ArrayList<Integer> size = db.runIntQuery("SELECT COUNT(*) FROM `beacon1`");
             System.out.println(size.get(0));
-
+            
             for (int i = size.get(0) - 50; i <= size.get(0); i++) {
 
                 db.prepareQuery("SELECT MAC FROM beacon1 WHERE id = (?)");
