@@ -51,7 +51,7 @@ public class Main extends Application {
             TrilaterationTest test = new TrilaterationTest();	// What will do the Trilateration
 
 			/* Implements the Database*/
-            String url = "jdbc:mysql://localhost:3306/blueping?autoReconnect=true&useSSL=false";
+            String url = "jdbc:mysql://10.109.103.234:3306/blueping?autoReconnect=true&useSSL=false";
             String user = "root";
             String password = "addjteam4";
 
