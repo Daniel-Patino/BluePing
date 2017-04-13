@@ -10,8 +10,8 @@ import java.util.*;
 
 public class Main extends Application {	
 	
-	public static final int WIDTH = 1280;
-	public static final int HEIGHT = 960;
+	public static final int WIDTH = 1440;
+	public static final int HEIGHT = 900;
 	public static final int DETAILS_BUTTONS = 3;
 
 	@Override
