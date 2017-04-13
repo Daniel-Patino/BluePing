@@ -15,13 +15,13 @@ public class WidgetsScene {
 	private void defineWidgetsPane()
 	{
 		widgetsPane.setTop(slider);
-		widgetsPane.setMaxSize(Main.WIDTH, Main.HEIGHT - 750);
+		widgetsPane.setMaxSize(Main.WIDTH, Main.HEIGHT - 800);
 		widgetsPane.setStyle("-fx-border-color: red;");
 	}
 	
 	private void defineSlider()
 	{
-		slider.setMaxSize(1000, 500);
+		slider.setMaxSize(1440, 200);
 		slider.setMin(0);
 		slider.setMax(25);
 		slider.setValue(slider.getMax());

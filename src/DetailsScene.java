@@ -43,11 +43,11 @@ public class DetailsScene {
 		buttons = buttons(numberOfButtons);
 		optionsTabs.getChildren().addAll(buttons);
 		detailsScene.setTop(optionsTabs);
-		detailsScene.setMaxSize(Main.WIDTH - 500, Main.HEIGHT - (Main.HEIGHT - 500));
+		detailsScene.setMaxSize(Main.WIDTH - 700, Main.HEIGHT - (Main.HEIGHT - 700));
 		detailsScene.setStyle("-fx-border-color: red;");
 		formatGridPane();
 		someRandomPane.setStyle("-fx-border-color: green;");
-		someRandomPane.setMaxSize(Main.WIDTH - 525, Main.HEIGHT - (Main.HEIGHT - 450));
+		someRandomPane.setMaxSize(Main.WIDTH - 725, Main.HEIGHT - (Main.HEIGHT - 650));
 		
 		Text[] customerTextA = {new Text("A"), new Text("E"), new Text("D")};
 		Text[] customerTextB = {new Text("B"), new Text("D"), new Text("E")};
@@ -72,9 +72,9 @@ public class DetailsScene {
 		someRandomPane.setStyle("-fx-border-color: blue; -fx-border-width: 5;");
 		someRandomPane.setGridLinesVisible(true);
 		someRandomPane.setAlignment(Pos.TOP_CENTER);
-		someRandomPane.getColumnConstraints().add(new ColumnConstraints((Main.WIDTH - 525) / 3));
-		someRandomPane.getColumnConstraints().add(new ColumnConstraints((Main.WIDTH - 525) / 3));
-		someRandomPane.getColumnConstraints().add(new ColumnConstraints((Main.WIDTH - 525) / 3));
+		someRandomPane.getColumnConstraints().add(new ColumnConstraints((Main.WIDTH - 725) / 3));
+		someRandomPane.getColumnConstraints().add(new ColumnConstraints((Main.WIDTH - 725) / 3));
+		someRandomPane.getColumnConstraints().add(new ColumnConstraints((Main.WIDTH - 725) / 3));
 	}
 	
 	private void fillChart()
@@ -121,7 +121,7 @@ public class DetailsScene {
 		buttons[2] = new Button("Sort TS");
 		
 		for(int i = 0; i < numberOfButtons; i++){
-			buttons[i].setPrefWidth((Main.WIDTH - 500) / numberOfButtons);
+			buttons[i].setPrefWidth((Main.WIDTH - 700) / numberOfButtons);
 		}
 		
 		return buttons;
