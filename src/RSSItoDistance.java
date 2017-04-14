@@ -2,7 +2,7 @@ public class RSSItoDistance
 {
     protected static double calculateDistance(double rssi)
     {
-        int txPower = -33;
+        double txPower = -46.16666667;
 
         if (rssi == 0) {
             return -1.0; // if we cannot determine accuracy, return -1.
