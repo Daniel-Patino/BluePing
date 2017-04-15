@@ -4,6 +4,7 @@ import java.util.Random;
 
 import org.apache.commons.math3.linear.RealVector;
 
+import javafx.application.Platform;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -50,11 +51,24 @@ public class CoordinateScene
 			coordinatePane.getChildren().add(circles[i]);
 			coordinatePane.getChildren().addAll(nodes[i][0], nodes[i][1], nodes[i][2]);
 		}
+		
+		custEvent();
 	}
 	
 	public void custEvent()
 	{
-		
+		new Thread() {
+		    public void run() {
+		        //Do some stuff in another thread
+		        Platform.runLater(new Runnable() {
+		            public void run() {
+		                while(true){
+		                	System.out.println("TRUE");
+		                }
+		            }
+		        });
+		    }
+		}.start();
 	}
 	
 	/**
