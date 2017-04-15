@@ -39,7 +39,7 @@ public class DBHandler {
             db.prepareQuery("SELECT RSSI FROM beacon1 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 1");
             db.setQueryId(mac);
             rssi1 = db.runIntPrepQuery();
-            //System.out.println(rssi1);
+            System.out.println(rssi1);
             rssi1 = RSSItoDistance.calculateDistance(rssi1);
             //System.out.println(rssi1);
 

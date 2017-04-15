@@ -13,6 +13,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
+import javax.xml.crypto.Data;
+
 /**
  * 
  * @author Daniel
@@ -21,6 +23,7 @@ import javafx.scene.shape.Shape;
 public class CoordinateScene
 {
 	private TrilaterationTest trilaterate;
+	private Database db;
 	private RealVector[] pos;
 	
 	public Pane coordinatePane;
@@ -36,29 +39,22 @@ public class CoordinateScene
 	 */
 	public CoordinateScene(boolean nodesVisible) throws Exception
 	{
-		Database db = DBHandler.connectDatabase();
+		Database dbtest = DBHandler.connectDatabase();
         TrilaterationTest test = new TrilaterationTest();
-        test = DBHandler.retrieveData(db);
+        test = DBHandler.retrieveData(dbtest);
         RealVector[] dots = test.trilateration3DExact();
 		
 		this.trilaterate = test;
-		this.pos= dots;
+		this.pos = dots;
+		this.db = dbtest;
 
 		definePane();
-		
-		Circle[] circles = centerCircleArr(10, Color.BLUE);
-		Shape[][] nodes = nodes(nodesVisible, trilaterate.idToDistances);
-		
-		for(int i = 0; i < trilaterate.hashSize(); i++){
-			coordinatePane.getChildren().add(circles[i]);
-			coordinatePane.getChildren().addAll(nodes[i][0], nodes[i][1], nodes[i][2]);
-		}
 		
 		custEvent();
 	}
 
 	int i = 0;
-	
+
 	public void custEvent()
 	{
 		Timer timer = new java.util.Timer();
@@ -67,11 +63,23 @@ public class CoordinateScene
 		    public void run() {
 		         Platform.runLater(new Runnable() {
 		            public void run() {
-		            	System.out.println(i++);
+		                try {
+                            trilaterate = DBHandler.retrieveData(db);
+                            pos = trilaterate.trilateration3DExact();
+                            Circle[] circles = centerCircleArr(10, Color.BLUE);
+                            Shape[][] nodes = nodes(true, trilaterate.idToDistances);
+
+                            for(int i = 0; i < trilaterate.hashSize(); i++){
+                                coordinatePane.getChildren().add(circles[i]);
+                                coordinatePane.getChildren().addAll(nodes[i][0], nodes[i][1], nodes[i][2]);
+                            }
+                        } catch (Exception e) {
+		                    e.printStackTrace();
+                        }
 		            }
 		        });
 		    }
-		}, 100, 100);
+		}, 100, 10000);
 	}
 	
 	/**
