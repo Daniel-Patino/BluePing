@@ -56,6 +56,8 @@ public class CoordinateScene
 		
 		custEvent();
 	}
+
+	int i = 0;
 	
 	public void custEvent()
 	{
@@ -65,7 +67,7 @@ public class CoordinateScene
 		    public void run() {
 		         Platform.runLater(new Runnable() {
 		            public void run() {
-		            	System.out.println("10000");
+		            	System.out.println(i++);
 		            }
 		        });
 		    }
