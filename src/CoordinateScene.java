@@ -29,11 +29,18 @@ public class CoordinateScene
 	 * @param trilaterate
 	 * @param pos
 	 * @param nodesVisible
+	 * @throws Exception 
 	 */
-	public CoordinateScene(TrilaterationTest trilaterate, RealVector[] pos, boolean nodesVisible)
+	public CoordinateScene(boolean nodesVisible) throws Exception
 	{
-		this.trilaterate = trilaterate;
-		this.pos = pos;
+		Database db = DBHandler.connectDatabase();
+        TrilaterationTest test = new TrilaterationTest();
+        test = DBHandler.retrieveData(db);
+        RealVector[] dots = test.trilateration3DExact();
+		
+		this.trilaterate = test;
+		this.pos= dots;
+
 		definePane();
 		
 		Circle[] circles = centerCircleArr(10, Color.BLUE);
@@ -44,10 +51,10 @@ public class CoordinateScene
 			coordinatePane.getChildren().addAll(nodes[i][0], nodes[i][1], nodes[i][2]);
 		}
 	}
-
-	public void DBBuilder()
+	
+	public void custEvent()
 	{
-
+		
 	}
 	
 	/**

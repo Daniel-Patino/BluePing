@@ -4,6 +4,7 @@ import java.util.ArrayList;
  * Created by dannysuarez on 4/14/17.
  */
 public class DBHandler {
+	
     public static Database connectDatabase() throws Exception
     {
         /* Implements the Database*/
