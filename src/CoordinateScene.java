@@ -62,9 +62,9 @@ public class CoordinateScene
 		        //Do some stuff in another thread
 		        Platform.runLater(new Runnable() {
 		            public void run() {
-		                while(true){
+		                //while(true){
 		                	System.out.println("TRUE");
-		                }
+		                //}
 		            }
 		        });
 		    }
