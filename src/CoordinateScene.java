@@ -44,6 +44,11 @@ public class CoordinateScene
 			coordinatePane.getChildren().addAll(nodes[i][0], nodes[i][1], nodes[i][2]);
 		}
 	}
+
+	public void DBBuilder()
+	{
+
+	}
 	
 	/**
 	 * 

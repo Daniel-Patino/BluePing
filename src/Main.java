@@ -18,25 +18,21 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		try {
+            /* Instantiate */
+            StackPane masterStack = new StackPane();			// What the user will ultimately see
+            Database db = DBHandler.connectDatabase();
+            TrilaterationTest test = new TrilaterationTest();
+            test = DBHandler.retrieveData(db);
+            RealVector[] dots = test.trilateration3DExact();		// Used to determine the user Pos
+
+            /* Creates the Coordinate Scene */
+            CoordinateScene coordScene = new CoordinateScene(test, dots, false);
+
 			/* Creates the Details Scene */
 			DetailsScene detScene = new DetailsScene(DETAILS_BUTTONS);
 			
 			/* Creates the Widgets Scene */
 			WidgetsScene widScene = new WidgetsScene();
-
-			/* Instantiate */
-            StackPane masterStack = new StackPane();			// What the user will ultimately see
-
-            Database db = connectDatabase();
-
-            //System.out.println(RSSItoDistance.calculateDistance(-57.66666667));
-
-            TrilaterationTest test = retrieveData(db);
-            
-            RealVector[] dots = test.trilateration3DExact();		// Used to determine the user Pos
-
-            /* Creates the Coordinate Scene */
-            CoordinateScene coordScene = new CoordinateScene(test, dots, false);
 
             /* Creates the masterStack that will hold all the scenes */
             StackPane.setAlignment(coordScene.coordinatePane, Pos.TOP_LEFT);
@@ -49,6 +45,17 @@ public class Main extends Application {
             primaryStage.setScene(openScene);
             primaryStage.setResizable(false);
             primaryStage.setTitle("BluePing - Indoor Positioning System");
+            primaryStage.show();
+
+            for (int j = 0; j < 20; j++) {
+                test = DBHandler.retrieveData(db);
+                dots = test.trilateration3DExact();		// Used to determine the user Pos
+                coordScene = new CoordinateScene(test, dots, false);
+                masterStack.getChildren().remove(0);
+                StackPane.setAlignment(coordScene.coordinatePane, Pos.TOP_LEFT);
+                masterStack.getChildren().add(0, coordScene.coordinatePane);
+                //Thread.sleep(1000);
+            }
         }
 		
 		catch(Exception e) {
@@ -56,64 +63,6 @@ public class Main extends Application {
 		}
 	}
 
-	public static Database connectDatabase() throws Exception
-    {
-        /* Implements the Database*/
-        String url = "jdbc:mysql://localhost:3306/blueping?autoReconnect=true&useSSL=false";
-        String user = "root";
-        String password = "addjteam4";
-
-        Database db = new Database(url, user, password);
-        db.connect();
-
-        return db;
-    }
-
-    public static TrilaterationTest retrieveData(Database db) throws Exception
-    {
-        double rssi1, rssi2, rssi3;
-        rssi1 = rssi2 = rssi3 = 0;
-
-        String mac = "";
-
-        TrilaterationTest test = new TrilaterationTest();
-
-        ArrayList<Integer> size = db.runIntQuery("SELECT COUNT(*) FROM `beacon1`");
-
-        for (int i = size.get(0) - 50; i <= size.get(0); i++) {
-
-            db.prepareQuery("SELECT MAC FROM beacon1 WHERE id = (?)");
-            db.setQueryId(i);
-            mac = db.runStringPrepQuery();
-            System.out.println(mac);
-
-            db.prepareQuery("SELECT RSSI FROM beacon1 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 1");
-            db.setQueryId(mac);
-            rssi1 = db.runIntPrepQuery();
-            //System.out.println(rssi1);
-            rssi1 = RSSItoDistance.calculateDistance(rssi1);
-            //System.out.println(rssi1);
-
-            db.prepareQuery("SELECT RSSI FROM beacon2 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 1");
-            db.setQueryId(mac);
-            rssi2 = db.runIntPrepQuery();
-            //System.out.println(rssi2);
-            rssi2 = RSSItoDistance.calculateDistance(rssi2);
-            //System.out.println(rssi2);
-
-            db.prepareQuery("SELECT RSSI FROM beacon3 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 1");
-            db.setQueryId(mac);
-            rssi3 = db.runIntPrepQuery();
-            //System.out.println(rssi3);
-            rssi3 = RSSItoDistance.calculateDistance(rssi3);
-            //System.out.println(rssi3);
-
-            test.idToDistances.put(mac, new double[]{rssi1, rssi2, rssi3});
-        }
-
-        return test;
-    }
-	
 	public static void main(String[] args) throws Exception
 	{
 		launch(args);
