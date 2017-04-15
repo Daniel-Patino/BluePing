@@ -1,6 +1,8 @@
 import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import org.apache.commons.math3.linear.RealVector;
 
@@ -57,18 +59,17 @@ public class CoordinateScene
 	
 	public void custEvent()
 	{
-		new Thread() {
+		Timer timer = new java.util.Timer();
+
+		timer.schedule(new TimerTask() {
 		    public void run() {
-		        //Do some stuff in another thread
-		        Platform.runLater(new Runnable() {
+		         Platform.runLater(new Runnable() {
 		            public void run() {
-		                //while(true){
-		                	System.out.println("TRUE");
-		                //}
+		            	System.out.println("10000");
 		            }
 		        });
 		    }
-		}.start();
+		}, 100, 100);
 	}
 	
 	/**
