@@ -13,8 +13,6 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 
-import javax.xml.crypto.Data;
-
 /**
  * 
  * @author Daniel
@@ -64,6 +62,9 @@ public class CoordinateScene
 		         Platform.runLater(new Runnable() {
 		            public void run() {
 		                try {
+		                	while(coordinatePane.getChildren().size() != 0){
+                				coordinatePane.getChildren().remove(0);
+                			}
                             trilaterate = DBHandler.retrieveData(db);
                             pos = trilaterate.trilateration3DExact();
                             Circle[] circles = centerCircleArr(10, Color.BLUE);
@@ -72,7 +73,7 @@ public class CoordinateScene
                             for(int i = 0; i < trilaterate.hashSize(); i++){
                                 coordinatePane.getChildren().add(circles[i]);
                                 coordinatePane.getChildren().addAll(nodes[i][0], nodes[i][1], nodes[i][2]);
-                            }
+                            }                        
                         } catch (Exception e) {
 		                    e.printStackTrace();
                         }
