@@ -23,6 +23,8 @@ public class DBHandler {
         double rssi1, rssi2, rssi3;
         rssi1 = rssi2 = rssi3 = 0;
 
+        double actualUnitsX = 6.7056;
+        
         String mac = "";
 
         TrilaterationTest test = new TrilaterationTest();
@@ -40,21 +42,21 @@ public class DBHandler {
             db.setQueryId(mac);
             rssi1 = db.runIntPrepQuery();
             //System.out.println(rssi1);
-            rssi1 = RSSItoDistance.calculateDistance(rssi1);
+            rssi1 = RSSItoDistance.XtoScale(actualUnitsX) * RSSItoDistance.calculateDistance(rssi1);
             //System.out.println(rssi1);
 
             db.prepareQuery("SELECT RSSI FROM beacon2 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 1");
             db.setQueryId(mac);
             rssi2 = db.runIntPrepQuery();
             //System.out.println(rssi2);
-            rssi2 = RSSItoDistance.calculateDistance(rssi2);
+            rssi2 = RSSItoDistance.XtoScale(actualUnitsX) * RSSItoDistance.calculateDistance(rssi2);
             //System.out.println(rssi2);
 
             db.prepareQuery("SELECT RSSI FROM beacon3 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 1");
             db.setQueryId(mac);
             rssi3 = db.runIntPrepQuery();
             //System.out.println(rssi3);
-            rssi3 = RSSItoDistance.calculateDistance(rssi3);
+            rssi3 = RSSItoDistance.XtoScale(actualUnitsX) * (RSSItoDistance.calculateDistance(rssi3));
             //System.out.println(rssi3);
 
             test.idToDistances.put(mac, new double[]{rssi1, rssi2, rssi3});
