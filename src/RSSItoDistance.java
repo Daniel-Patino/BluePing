@@ -19,17 +19,11 @@ public class RSSItoDistance
         return Math.abs((rssi + 47.45745746) / (10 * Math.log10(distance)));
     }
     
-    protected static double XtoScale(double actualUnitsX)
+    protected static double radialScale(double radialDistance)
     {
     	// Dimensions of CoordinateScene is 700 pixels by 700 pixels
-    	double xDim = 700;
-    	return xDim / actualUnitsX;
+    	double dimension = 700;
+    	return  dimension / radialDistance;
     	
-    }
-    
-    protected static double YtoScale(double actualUnitsY)
-    {
-    	double yDim = 700;
-    	return yDim / actualUnitsY;
     }
 }
