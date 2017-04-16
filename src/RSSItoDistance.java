@@ -2,19 +2,20 @@ public class RSSItoDistance
 {
     protected static double calculateDistance(double rssi)
     {
-        double txPower = -46.16666667;
+        /*
+        * RSSI = TxPower - 10 * n * lg(d)
+        * n = 2 (in free space)
+        *
+        * n = (RSSI - TxPower) / (10 * lg(d))
+        *
+        * d = 10 ^ ((TxPower - RSSI) / (10 * n))
+        */
 
-        if (rssi == 0) {
-            return -1.0; // if we cannot determine accuracy, return -1.
-        }
+        return Math.pow(10.0, (-47.45745746 - rssi) / (10.0 * 2.015694976));
+    }
 
-        double ratio = rssi*1.0/txPower;
-        if (ratio < 1.0) {
-            return Math.pow(ratio,10);
-        }
-        else {
-            double distance =  (0.89976)*Math.pow(ratio,7.7095) + 0.111;
-            return distance;
-        }
+    protected static double calculateEnvConst(double rssi, double distance)
+    {
+        return Math.abs((rssi + 47.45745746) / (10 * Math.log10(distance)));
     }
 }
