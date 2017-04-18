@@ -13,7 +13,7 @@ public class RSSItoDistance
         * d = 10 ^ ((TxPower - RSSI) / (10 * n))
         */
 
-        return Math.pow(10.0, (-47.45745746 - rssi) / (10.0 * 2.015694976));
+        return Math.pow(10.0, (-41.94871795 - rssi) / (10.0 * 1.75));
     }
 
     protected static double calculateEnvConst(double rssi, double distance)

@@ -39,31 +39,17 @@ public class Main extends Application {
             primaryStage.setTitle("BluePing - Indoor Positioning System");
             primaryStage.show();
 
-            /*System.out.println(RSSItoDistance.calculateDistance(-30.60611694));
-            System.out.println(RSSItoDistance.calculateDistance(-47.45745746));
-            System.out.println(RSSItoDistance.calculateDistance(-55.51740482));
-            System.out.println(RSSItoDistance.calculateDistance(-58.28055556));
-            System.out.println(RSSItoDistance.calculateDistance(-59.56140351));
-            System.out.println(RSSItoDistance.calculateDistance(-60.72239422));
-            System.out.println(RSSItoDistance.calculateDistance(-63.93225918));
-            System.out.println(RSSItoDistance.calculateDistance(-64.16424116));
-            System.out.println(RSSItoDistance.calculateDistance(-70.82926829));
-            System.out.println(RSSItoDistance.calculateDistance(-70.26315789));
-            System.out.println(RSSItoDistance.calculateDistance(-70.35135135));
-            System.out.println(RSSItoDistance.calculateDistance(-71.30612245));*/
+            /*System.out.println(RSSItoDistance.calculateDistance(-47.6));
+            System.out.println(RSSItoDistance.calculateDistance(-41.94871795));
+            System.out.println(RSSItoDistance.calculateDistance(-48.35714286));
+            System.out.println(RSSItoDistance.calculateDistance(-52.47368421));
+			System.out.println(RSSItoDistance.calculateDistance(-54));*/
 
-            /*System.out.println(RSSItoDistance.calculateEnvConst(-30.60611694, 0));
-            System.out.println(RSSItoDistance.calculateEnvConst(-47.45745746, 1));
-            System.out.println(RSSItoDistance.calculateEnvConst(-55.51740482, 1.524));
-            System.out.println(RSSItoDistance.calculateEnvConst(-58.28055556, 3.048));
-            System.out.println(RSSItoDistance.calculateEnvConst(-59.56140351, 4.572));
-            System.out.println(RSSItoDistance.calculateEnvConst(-60.72239422, 6.096));
-            System.out.println(RSSItoDistance.calculateEnvConst(-63.93225918, 7.62));
-            System.out.println(RSSItoDistance.calculateEnvConst(-64.16424116, 9.144));
-            System.out.println(RSSItoDistance.calculateEnvConst(-70.82926829, 10.668));
-            System.out.println(RSSItoDistance.calculateEnvConst(-70.26315789, 12.192));
-            System.out.println(RSSItoDistance.calculateEnvConst(-70.35135135, 13.716));
-            System.out.println(RSSItoDistance.calculateEnvConst(-71.30612245, 15.24));*/
+            /*System.out.println(RSSItoDistance.calculateEnvConst(-25.5, 0));
+            System.out.println(RSSItoDistance.calculateEnvConst(-41.94871795, 1));
+            System.out.println(RSSItoDistance.calculateEnvConst(-48.35714286, 2));
+            System.out.println(RSSItoDistance.calculateEnvConst(-52.47368421, 3));
+            System.out.println(RSSItoDistance.calculateEnvConst(-54, 4));*/
         }
 		
 		catch(Exception e) {

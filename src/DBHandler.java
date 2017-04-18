@@ -35,40 +35,40 @@ public class DBHandler {
 
         //test.idToDistances.put(mac, new double[]{testrssi, testrssi, testrssi});
 
-        for (int i = size.get(0) - 10; i <= size.get(0); i++) {
+        for (int i = size.get(0) - 50; i <= size.get(0); i++) {
 
             db.prepareQuery("SELECT MAC FROM beacon1 WHERE id = (?)");
             db.setQueryId(i);
             mac = db.runStringPrepQuery();
             //System.out.println(mac);
 
-            db.prepareQuery("SELECT RSSI FROM beacon1 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 5");
+            db.prepareQuery("SELECT RSSI FROM beacon1 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 60");
             db.setQueryId(mac);
             rssi1List = db.runIntPrepQuery();
             //System.out.println(rssi1);
             rssi1 = RSSItoDistance.radialScale(radialDistance) * RSSItoDistance.calculateDistance(RSSItoDistance.calculateAverage(rssi1List));
             //System.out.println(rssi1List);
-            System.out.print("Beacon 1: " + RSSItoDistance.calculateAverage(rssi1List) + " ");
-            System.out.print(RSSItoDistance.calculateDistance(RSSItoDistance.calculateAverage(rssi1List)) + " ");
-            System.out.println(rssi1);
+            //System.out.print("Beacon 1: " + RSSItoDistance.calculateAverage(rssi1List) + " ");
+            //System.out.print(RSSItoDistance.calculateDistance(RSSItoDistance.calculateAverage(rssi1List)) + " ");
+            //System.out.println(rssi1);
 
-            db.prepareQuery("SELECT RSSI FROM beacon2 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 5");
+            db.prepareQuery("SELECT RSSI FROM beacon2 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 60");
             db.setQueryId(mac);
             rssi2List = db.runIntPrepQuery();
             //System.out.println(rssi2);
             rssi2 = RSSItoDistance.radialScale(radialDistance) * RSSItoDistance.calculateDistance(RSSItoDistance.calculateAverage(rssi2List));
-            System.out.print("Beacon 2: " + RSSItoDistance.calculateAverage(rssi2List) + " ");
-            System.out.print(RSSItoDistance.calculateDistance(RSSItoDistance.calculateAverage(rssi2List)) + " ");
-            System.out.println(rssi2);
+            //System.out.print("Beacon 2: " + RSSItoDistance.calculateAverage(rssi2List) + " ");
+            //System.out.print(RSSItoDistance.calculateDistance(RSSItoDistance.calculateAverage(rssi2List)) + " ");
+            //System.out.println(rssi2);
 
-            db.prepareQuery("SELECT RSSI FROM beacon3 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 5");
+            db.prepareQuery("SELECT RSSI FROM beacon3 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 60");
             db.setQueryId(mac);
             rssi3List = db.runIntPrepQuery();
             //System.out.println(rssi3);
             rssi3 = RSSItoDistance.radialScale(radialDistance) * (RSSItoDistance.calculateDistance(RSSItoDistance.calculateAverage(rssi3List)));
-            System.out.print("Beacon 3: " + RSSItoDistance.calculateAverage(rssi3List) + " ");
-            System.out.print(RSSItoDistance.calculateDistance(RSSItoDistance.calculateAverage(rssi3List)) + " ");
-            System.out.println(rssi3);
+            //System.out.print("Beacon 3: " + RSSItoDistance.calculateAverage(rssi3List) + " ");
+            //System.out.print(RSSItoDistance.calculateDistance(RSSItoDistance.calculateAverage(rssi3List)) + " ");
+            //System.out.println(rssi3);
 
             System.out.println(" ");
 
