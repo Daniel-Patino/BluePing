@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -32,6 +33,7 @@ public class DetailsScene {
 	private GridPane someRandomPane = new GridPane();
 
 	public Button[] buttons;
+	public HashMap<String, double[]> idToDistances = new HashMap<>();
 	public ArrayList<Text[]> customerInfo = new ArrayList<>();
 	private boolean flagID = true;
 	private boolean flagLO = true;
@@ -68,9 +70,10 @@ public class DetailsScene {
 		detailsScene.setCenter(someRandomPane);
 	}
 	
-	public void insertID()
+	public void insertID(String MACAddress, String loc, String time)
 	{
-		
+		Text[] customerText = {new Text(MACAddress), new Text(loc), new Text(time)};
+		customerInfo.add(customerText);
 	}
 	
 	private void formatGridPane()
