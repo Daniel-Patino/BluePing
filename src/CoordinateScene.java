@@ -68,7 +68,7 @@ public class CoordinateScene
                             trilaterate = DBHandler.retrieveData(db);
                             pos = trilaterate.trilateration3DExact();
                             Circle[] circles = centerCircleArr(10, Color.BLUE);
-                            Shape[][] nodes = nodes(false, trilaterate.idToDistances);
+                            Shape[][] nodes = nodes(true, trilaterate.idToDistances);
 
                             for(int i = 0; i < trilaterate.hashSize(); i++){
                                 coordinatePane.getChildren().add(circles[i]);
@@ -80,7 +80,7 @@ public class CoordinateScene
 		            }
 		        });
 		    }
-		}, 100, 2500);
+		}, 100, 1000);
 	}
 	
 	/**

@@ -93,7 +93,7 @@ public class Database {
         try {
             rs = pst.executeQuery();
 
-            if (rs.next()) {
+            while (rs.next()) {
                 returnedValue = rs.getString(1);
             }
         } catch (SQLException e) {
@@ -102,19 +102,20 @@ public class Database {
         return returnedValue;
     }
 
-	public int runIntPrepQuery() throws Exception {
-        int returnedValue = 0;
+	public ArrayList<Integer> runIntPrepQuery() throws Exception {
+        ArrayList<Integer> returnedValues = new ArrayList<>();
 
         try {
             rs = pst.executeQuery();
 
-            if (rs.next()) {
-                returnedValue = rs.getInt(1);
+            while (rs.next()) {
+                returnedValues.add(rs.getInt(1));
             }
         } catch (SQLException e) {
             e.printStackTrace();
-        } 
-        return returnedValue;
+        }
+
+        return returnedValues;
 
     }
 

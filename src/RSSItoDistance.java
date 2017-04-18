@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class RSSItoDistance
 {
     protected static double calculateDistance(double rssi)
@@ -24,6 +26,17 @@ public class RSSItoDistance
     	// Dimensions of CoordinateScene is 700 pixels by 700 pixels
     	double dimension = 700;
     	return  dimension / radialDistance;
-    	
+    }
+
+    protected static double calculateAverage(ArrayList<Integer> marks) {
+        double avg = 0;
+        double size = marks.size();
+        if(!marks.isEmpty()) {
+            for (Integer mark : marks) {
+                avg += (double) mark;
+            }
+            return avg / size;
+        }
+        return avg;
     }
 }
