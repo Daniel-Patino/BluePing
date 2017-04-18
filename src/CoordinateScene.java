@@ -47,7 +47,6 @@ public class CoordinateScene
 		this.db = dbtest;
 
 		definePane();
-		
 		custEvent();
 	}
 
@@ -56,7 +55,6 @@ public class CoordinateScene
 	public void custEvent()
 	{
 		Timer timer = new java.util.Timer();
-
 		timer.schedule(new TimerTask() {
 		    public void run() {
 		         Platform.runLater(new Runnable() {
