@@ -47,7 +47,8 @@ public class CoordinateScene
 		this.db = dbtest;
 
 		definePane();
-		custEvent();
+		animation();
+		//custEvent();
 	}
 
 	int i = 0;
@@ -60,7 +61,7 @@ public class CoordinateScene
 		         Platform.runLater(new Runnable() {
 		            public void run() {
 		                try {
-		                	while(coordinatePane.getChildren().size() != 0){
+		                	while(coordinatePane.getChildren().size() != 0) {
                 				coordinatePane.getChildren().remove(0);
                 			}
                             trilaterate = DBHandler.retrieveData(db);
@@ -68,7 +69,7 @@ public class CoordinateScene
                             Circle[] circles = centerCircleArr(10, Color.BLUE);
                             Shape[][] nodes = nodes(false, trilaterate.idToDistances);
 
-                            for(int i = 0; i < trilaterate.hashSize(); i++){
+                            for(int i = 0; i < trilaterate.hashSize(); i++) {
                                 coordinatePane.getChildren().add(circles[i]);
                                 coordinatePane.getChildren().addAll(nodes[i][0], nodes[i][1], nodes[i][2]);
                             }                        
@@ -161,6 +162,32 @@ public class CoordinateScene
 		coordinatePane = new Pane();
 		coordinatePane.setMaxSize(700, 700);
 		coordinatePane.setStyle("-fx-border-color: black;");
+	}
+
+	public void animation()
+	{
+		int x, y;
+		x = 0;
+		y = 375;
+
+		Circle car = new Circle(x, y, 10);
+        coordinatePane.getChildren().add(car);
+
+        Timer timer = new java.util.Timer();
+		timer.schedule(new TimerTask() {
+			public void run() {
+				Platform.runLater(new Runnable() {
+					public void run() {
+						try {
+							car.setTranslateX(car.getTranslateX() + 62.5);
+							car.setTranslateY(car.getTranslateY());
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		}, 5000, 750);
 	}
 
 	/* Setters and Getters */

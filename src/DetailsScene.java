@@ -52,17 +52,17 @@ public class DetailsScene {
 		someRandomPane.setStyle("-fx-border-color: green;");
 		someRandomPane.setMaxSize(Main.WIDTH - 725, Main.HEIGHT - (Main.HEIGHT - 650));
 		
-		Text[] customerTextA = {new Text("A1:B2:C3:D4:F5"), new Text("Diner"), new Text("5 Minutes")};
-		Text[] customerTextB = {new Text("B"), new Text("D"), new Text("E")};
-		Text[] customerTextC = {new Text("C"), new Text("C"), new Text("A")};
-		Text[] customerTextD = {new Text("D"), new Text("B"), new Text("C")};
-		Text[] customerTextE = {new Text("E"), new Text("A"), new Text("B")};
+		Text[] customerTextA = {new Text("Car 1"), new Text("Parking Lot"), new Text("5 Minutes")};
+		//Text[] customerTextB = {new Text("B"), new Text("D"), new Text("E")};
+		//Text[] customerTextC = {new Text("C"), new Text("C"), new Text("A")};
+		//Text[] customerTextD = {new Text("D"), new Text("B"), new Text("C")};
+		//Text[] customerTextE = {new Text("E"), new Text("A"), new Text("B")};
 		
 		customerInfo.add(customerTextA);
-		customerInfo.add(customerTextB);
-		customerInfo.add(customerTextC);
-		customerInfo.add(customerTextD);
-		customerInfo.add(customerTextE);
+		//customerInfo.add(customerTextB);
+		//customerInfo.add(customerTextC);
+		//customerInfo.add(customerTextD);
+		//customerInfo.add(customerTextE);
 		
 		fillChart();
 		someEvent();
