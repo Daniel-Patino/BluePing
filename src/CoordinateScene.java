@@ -90,13 +90,13 @@ public class CoordinateScene
 		         Platform.runLater(new Runnable() {
 		            public void run() {
 		                try {
-		                	if(coordinatePane.getChildren().size() < 15) {
+		                	if(coordinatePane.getChildren().size() < 10) {
 			                	Random rand = new Random();
 			                	int x = rand.nextInt(700);
 			                	int y = rand.nextInt(700);
 			                	
-			                	Color randomColor = new Color((Math.random()), Math.random(), Math.random(), 1);
-			                	Circle newCircle = new Circle(x, y, 10, randomColor);
+			                	//Color randomColor = new Color((Math.random()), Math.random(), Math.random(), 1);
+			                	Circle newCircle = new Circle(x, y, 10 /*, randomColor */);
 			                	
 			                	String temp = new String();
 			                	if(x < 350 && y < 350){
@@ -180,8 +180,8 @@ public class CoordinateScene
 	{
 		Circle[] positions = new Circle[pos.length];
 		for(int i = 0; i < positions.length; i++){
-			Color randomColor = new Color((Math.random()), Math.random(), Math.random(), 1);
-			positions[i] = new Circle(pos[i].getEntry(0), pos[i].getEntry(1), cirSize, randomColor);
+			//Color randomColor = new Color((Math.random()), Math.random(), Math.random(), 1);
+			positions[i] = new Circle(pos[i].getEntry(0), pos[i].getEntry(1), cirSize /*, randomColor */);
 		}
 		
 		return positions;

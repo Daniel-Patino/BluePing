@@ -103,8 +103,7 @@ public class DetailsScene {
 		someRandomPane.add(textC, 2, 0);
 		
 		for(int i = 0; i < customerInfo.size(); i++){
-			try
-			{
+			try {
 				someRandomPane.add(customerInfo.get(i)[0], 0, i + 1);
 				someRandomPane.add(customerInfo.get(i)[1], 1, i + 1);
 				someRandomPane.add(customerInfo.get(i)[2], 2, i + 1);
