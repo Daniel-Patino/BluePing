@@ -42,7 +42,7 @@ public class DBHandler {
             mac = db.runStringPrepQuery();
             //System.out.println(mac);
 
-            db.prepareQuery("SELECT RSSI FROM beacon1 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 60");
+            db.prepareQuery("SELECT RSSI FROM beacon1 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 50");
             db.setQueryId(mac);
             rssi1List = db.runIntPrepQuery();
             //System.out.println(rssi1);
@@ -52,7 +52,7 @@ public class DBHandler {
             //System.out.print(RSSItoDistance.calculateDistance(RSSItoDistance.calculateAverage(rssi1List)) + " ");
             //System.out.println(rssi1);
 
-            db.prepareQuery("SELECT RSSI FROM beacon2 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 60");
+            db.prepareQuery("SELECT RSSI FROM beacon2 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 50");
             db.setQueryId(mac);
             rssi2List = db.runIntPrepQuery();
             //System.out.println(rssi2);
@@ -61,7 +61,7 @@ public class DBHandler {
             //System.out.print(RSSItoDistance.calculateDistance(RSSItoDistance.calculateAverage(rssi2List)) + " ");
             //System.out.println(rssi2);
 
-            db.prepareQuery("SELECT RSSI FROM beacon3 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 60");
+            db.prepareQuery("SELECT RSSI FROM beacon3 WHERE MAC = (?) ORDER BY `TIME` DESC LIMIT 50");
             db.setQueryId(mac);
             rssi3List = db.runIntPrepQuery();
             //System.out.println(rssi3);

@@ -38,18 +38,6 @@ public class Main extends Application {
             primaryStage.setResizable(false);
             primaryStage.setTitle("BluePing - Indoor Positioning System");
             primaryStage.show();
-
-            /*System.out.println(RSSItoDistance.calculateDistance(-47.6));
-            System.out.println(RSSItoDistance.calculateDistance(-41.94871795));
-            System.out.println(RSSItoDistance.calculateDistance(-48.35714286));
-            System.out.println(RSSItoDistance.calculateDistance(-52.47368421));
-			System.out.println(RSSItoDistance.calculateDistance(-54));*/
-
-            /*System.out.println(RSSItoDistance.calculateEnvConst(-25.5, 0));
-            System.out.println(RSSItoDistance.calculateEnvConst(-41.94871795, 1));
-            System.out.println(RSSItoDistance.calculateEnvConst(-48.35714286, 2));
-            System.out.println(RSSItoDistance.calculateEnvConst(-52.47368421, 3));
-            System.out.println(RSSItoDistance.calculateEnvConst(-54, 4));*/
         }
 		
 		catch(Exception e) {
