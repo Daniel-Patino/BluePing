@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.scene.text.Text;
 
 /**
  * 
@@ -37,21 +38,20 @@ public class CoordinateScene
 	 */
 	public CoordinateScene(boolean nodesVisible) throws Exception
 	{
-		Database dbtest = DBHandler.connectDatabase();
+		//Database dbtest = DBHandler.connectDatabase();
         TrilaterationTest test = new TrilaterationTest();
-        test = DBHandler.retrieveData(dbtest);
+        //test = DBHandler.retrieveData(dbtest);
         RealVector[] dots = test.trilateration3DExact();
 		
 		this.trilaterate = test;
 		this.pos = dots;
-		this.db = dbtest;
+		//this.db = dbtest;
 
 		definePane();
-		animation();
 		//custEvent();
+		bunchODots();
+		//animation();
 	}
-
-	int i = 0;
 
 	public void custEvent()
 	{
@@ -80,6 +80,55 @@ public class CoordinateScene
 		        });
 		    }
 		}, 100, 1000);
+	}
+	
+	public void bunchODots()
+	{
+		Timer timer = new java.util.Timer();
+		timer.schedule(new TimerTask() {
+		    public void run() {
+		         Platform.runLater(new Runnable() {
+		            public void run() {
+		                try {
+		                	if(coordinatePane.getChildren().size() < 15) {
+			                	Random rand = new Random();
+			                	int x = rand.nextInt(700);
+			                	int y = rand.nextInt(700);
+			                	
+			                	Color randomColor = new Color((Math.random()), Math.random(), Math.random(), 1);
+			                	Circle newCircle = new Circle(x, y, 10, randomColor);
+			                	
+			                	String temp = new String();
+			                	if(x < 350 && y < 350){
+			                		temp = "Quadrant I";
+			                	} else if(x < 350 && y >= 350) {
+			                		temp = "Quadrant II";
+			                	} else if(x >= 350 && y >= 350) {
+			                		temp = "Quadrant III";
+			                	} else {
+			                		temp = "Quadrant IV";
+			                	}
+			                	
+			                	Text[] newEntry = {
+			                			new Text(Integer.toString(coordinatePane.getChildren().size() + 1)),
+			                			new Text("X:" + x + " Y: " + y),
+			                			new Text(temp)
+			                	};
+			                	
+			            		DetailsScene.customerInfo.add(newEntry);
+			            		DetailsScene.fillChart();
+			                	
+			            		coordinatePane.getChildren().add(newCircle);	
+		                	} else {
+		                		// Do Nothing
+		                	}
+                        } catch (Exception e) {
+		                    e.printStackTrace();
+                        }
+		            }
+		        });
+		    }
+		}, 100, 100);
 	}
 	
 	/**

@@ -30,11 +30,11 @@ public class DetailsScene {
 
 	private HBox optionsTabs = new HBox();
 	private BorderPane detailsScene = new BorderPane();	
-	private GridPane someRandomPane = new GridPane();
+	private static GridPane someRandomPane = new GridPane();
 
 	public Button[] buttons;
 	public HashMap<String, double[]> idToDistances = new HashMap<>();
-	public ArrayList<Text[]> customerInfo = new ArrayList<>();
+	public static ArrayList<Text[]> customerInfo = new ArrayList<>();
 	private boolean flagID = true;
 	private boolean flagLO = true;
 	private boolean flagTI = true;
@@ -52,13 +52,13 @@ public class DetailsScene {
 		someRandomPane.setStyle("-fx-border-color: green;");
 		someRandomPane.setMaxSize(Main.WIDTH - 725, Main.HEIGHT - (Main.HEIGHT - 650));
 		
-		Text[] customerTextA = {new Text("Car 1"), new Text("Parking Lot"), new Text("5 Minutes")};
+		//Text[] customerTextA = {new Text("Car 1"), new Text("Parking Lot"), new Text("5 Minutes")};
 		//Text[] customerTextB = {new Text("B"), new Text("D"), new Text("E")};
 		//Text[] customerTextC = {new Text("C"), new Text("C"), new Text("A")};
 		//Text[] customerTextD = {new Text("D"), new Text("B"), new Text("C")};
 		//Text[] customerTextE = {new Text("E"), new Text("A"), new Text("B")};
 		
-		customerInfo.add(customerTextA);
+		//customerInfo.add(customerTextA);
 		//customerInfo.add(customerTextB);
 		//customerInfo.add(customerTextC);
 		//customerInfo.add(customerTextD);
@@ -70,7 +70,7 @@ public class DetailsScene {
 		detailsScene.setCenter(someRandomPane);
 	}
 	
-	public void insertID(String MACAddress, String loc, String time)
+	public static void insertID(String MACAddress, String loc, String time)
 	{
 		Text[] customerText = {new Text(MACAddress), new Text(loc), new Text(time)};
 		customerInfo.add(customerText);
@@ -86,7 +86,7 @@ public class DetailsScene {
 		someRandomPane.getColumnConstraints().add(new ColumnConstraints((Main.WIDTH - 725) / 3));
 	}
 	
-	private void fillChart()
+	public static void fillChart()
 	{
 		while(someRandomPane.getChildren().size() != 0){
 			someRandomPane.getChildren().remove(0);
@@ -96,7 +96,7 @@ public class DetailsScene {
 		
 		Text textA = new Text("Customer ID");
 		Text textB = new Text("Location");
-		Text textC = new Text("Time Spent");
+		Text textC = new Text("Quadrant");
 		
 		someRandomPane.add(textA, 0, 0);
 		someRandomPane.add(textB, 1, 0);
